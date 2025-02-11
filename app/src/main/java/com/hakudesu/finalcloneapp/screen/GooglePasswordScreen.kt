@@ -8,10 +8,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -47,13 +50,17 @@ fun GooglePasswordScreen(navController: NavController, email: String) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // Back Button
-            Text(
-                text = "Back",
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Normal,
+            Icon(
+                imageVector = Icons.Filled.ArrowBack,
+                contentDescription = "Home Icon",
                 modifier = Modifier
                     .padding(bottom = 8.dp)
                     .clickable { navController.popBackStack() }
+                    .width(80.dp)
+                    .height(35.dp)
+                    .align(AbsoluteAlignment.Left),
+
+                tint = Color.Black
             )
 
             Spacer(modifier = Modifier.height(50.dp))
@@ -68,7 +75,14 @@ fun GooglePasswordScreen(navController: NavController, email: String) {
             )
 
             Spacer(modifier = Modifier.height(50.dp))
-
+            Image(
+                painter = rememberImagePainter(data = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png"),
+                contentDescription = "Google Logo",
+                modifier = Modifier
+                    .size(152.dp, 60.dp)
+                    .padding(bottom = 16.dp)
+            )
+            Spacer(modifier = Modifier.height(50.dp))
             // Email Header
             Text(
                 text = email,
@@ -139,7 +153,7 @@ fun GooglePasswordScreen(navController: NavController, email: String) {
 
             // Next Button
             Button(
-                onClick = { /* Handle next button click */ },
+                onClick = { navController.navigate("RegisterScreen") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),

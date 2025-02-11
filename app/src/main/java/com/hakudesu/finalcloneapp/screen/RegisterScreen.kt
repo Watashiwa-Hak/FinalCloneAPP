@@ -36,7 +36,7 @@ fun RegisterScreen(navController: NavController) {
     val translations = mapOf(
         "en" to mapOf(
             "signUp" to "Sign Up",
-            "enterPhone" to "Enter your phone number to get started.",
+            "enterPhone" to "Enter your phone number to get started",
             "enterUsername" to "Enter Username",
             "enterPhoneNumber" to "Enter Phone Number",
             "enterPassword" to "Enter Password",
@@ -47,7 +47,7 @@ fun RegisterScreen(navController: NavController) {
         ),
         "kh" to mapOf(
             "signUp" to "ចុះឈ្មោះ",
-            "enterPhone" to "បញ្ចូលលេខទូរស័ព្ទរបស់អ្នកដើម្បីចាប់ផ្តើម.",
+            "enterPhone" to "បញ្ចូលលេខទូរស័ព្ទរបស់អ្នកដើម្បីចាប់ផ្តើម",
             "enterUsername" to "បញ្ចូលឈ្មោះអ្នកប្រើ",
             "enterPhoneNumber" to "បញ្ចូលលេខទូរស័ព្ទ",
             "enterPassword" to "បញ្ចូលពាក្យសម្ងាត់",
@@ -90,7 +90,7 @@ fun RegisterScreen(navController: NavController) {
                         horizontalArrangement = Arrangement.spacedBy(12.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .border(2.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(50.dp))
+                            .border(2.dp, color = Color(0xFFE15124), RoundedCornerShape(50.dp))
                             .padding(horizontal = 28.dp, vertical = 5.dp)
                     ) {
                         Button(

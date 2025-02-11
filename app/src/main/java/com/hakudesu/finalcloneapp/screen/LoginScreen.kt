@@ -42,31 +42,7 @@ import com.hakudesu.finalcloneapp.R
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 
-// Define your custom dark color scheme
-fun darkColorScheme() = darkColorScheme(
-    primary = Color(0xFFBB86FC),
-    secondary = Color(0xFF03DAC6),
-    tertiary = Color(0xFFF44336),
-    background = Color(0xFF121212),
-    surface = Color(0xFF1E1E1E),
-    onPrimary = Color.Black,
-    onSecondary = Color.Black,
-    onBackground = Color.White,
-    onSurface = Color.White
-)
 
-// Define your custom light color scheme
-fun lightColorScheme() = lightColorScheme(
-    primary = Color(0xFFFF5C29),
-    secondary = Color(0xFF03DAC6),
-    tertiary = Color(0xFFFF9800),
-    background = Color(0xFFF5F5F5),
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black
-)
 @Preview(showBackground = true)
 @Composable
 fun PreviewLoginScreen() {
@@ -78,9 +54,13 @@ fun PreviewLoginScreen() {
 @Composable
 fun LoginScreen(navController: NavController) {
     var emailOrUsername by remember { mutableStateOf(TextFieldValue("")) }
-    val password = remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
+
+    // State variables for validation errors
+    var emailOrUsernameError by remember { mutableStateOf(false) }
+    var passwordError by remember { mutableStateOf(false) }
 
     val translations = mapOf(
         "en" to mapOf(
@@ -90,7 +70,9 @@ fun LoginScreen(navController: NavController) {
             "signIn" to "Sign In",
             "orConnectWith" to "Or Connect with",
             "dontHaveAccount" to "Don't have an account?",
-            "signUp" to "Sign up"
+            "signUp" to "Sign up",
+            "emailOrUsernameError" to "Email or username is required",
+            "passwordError" to "Password is required"
         ),
         "kh" to mapOf(
             "emailOrUsername" to "អ៊ីមែល ឬឈ្មោះអ្នកប្រើ",
@@ -99,7 +81,9 @@ fun LoginScreen(navController: NavController) {
             "signIn" to "ចូល",
             "orConnectWith" to "ឬភ្ជាប់ជាមួយ",
             "dontHaveAccount" to "មិនមានគណនីទេ?",
-            "signUp" to "ចុះឈ្មោះ"
+            "signUp" to "ចុះឈ្មោះ",
+            "emailOrUsernameError" to "អ៊ីមែល ឬឈ្មោះអ្នកប្រើត្រូវការ",
+            "passwordError" to "ពាក្យសម្ងាត់ត្រូវការ"
         )
     )
 
@@ -148,7 +132,6 @@ fun LoginScreen(navController: NavController) {
                         Button(
                             onClick = { selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8C5EDE)),
-
                             shape = RoundedCornerShape(20.dp),
                             modifier = Modifier.size(width = 80.dp, height = 32.dp)
                         ) {
@@ -177,9 +160,14 @@ fun LoginScreen(navController: NavController) {
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Spacer(modifier = Modifier.height(20.dp))
+
+                // Email/Username Field
                 OutlinedTextField(
                     value = emailOrUsername,
-                    onValueChange = { emailOrUsername = it },
+                    onValueChange = {
+                        emailOrUsername = it
+                        emailOrUsernameError = it.text.isEmpty() // Validate on change
+                    },
                     label = {
                         Text(
                             currentTranslation["emailOrUsername"]!!,
@@ -187,18 +175,33 @@ fun LoginScreen(navController: NavController) {
                             fontWeight = FontWeight.Bold
                         )
                     },
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 10.dp),
                     shape = RoundedCornerShape(5.dp),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         containerColor = MaterialTheme.colorScheme.surface,
                         focusedBorderColor = MaterialTheme.colorScheme.primary,
                         unfocusedBorderColor = MaterialTheme.colorScheme.outline
-                    )
+                    ),
+                    isError = emailOrUsernameError
                 )
+                if (emailOrUsernameError) {
+                    Text(
+                        text = currentTranslation["emailOrUsernameError"]!!,
+                        color = MaterialTheme.colorScheme.error,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(start = 10.dp)
+                    )
+                }
 
+                // Password Field
                 OutlinedTextField(
-                    value = password.value,
-                    onValueChange = { password.value = it },
+                    value = password,
+                    onValueChange = {
+                        password = it
+                        passwordError = it.isEmpty() // Validate on change
+                    },
                     label = {
                         Text(
                             currentTranslation["password"]!!,
@@ -216,8 +219,18 @@ fun LoginScreen(navController: NavController) {
                         containerColor = MaterialTheme.colorScheme.surface,
                         focusedBorderColor = MaterialTheme.colorScheme.primary,
                         unfocusedBorderColor = MaterialTheme.colorScheme.outline
-                    )
+                    ),
+                    isError = passwordError
                 )
+                if (passwordError) {
+                    Text(
+                        text = currentTranslation["passwordError"]!!,
+                        color = MaterialTheme.colorScheme.error,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(start = 10.dp)
+                    )
+                }
+
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
                     currentTranslation["forgetPassword"]!!,
@@ -227,8 +240,19 @@ fun LoginScreen(navController: NavController) {
                     modifier = Modifier.padding(20.dp)
                 )
                 Spacer(modifier = Modifier.height(10.dp))
+
+                // Sign In Button with Validation
                 Button(
-                    onClick = { navController.navigate("HomeScreen") },
+                    onClick = {
+                        // Validate inputs
+                        emailOrUsernameError = emailOrUsername.text.isEmpty()
+                        passwordError = password.isEmpty()
+
+                        // Only navigate if there are no errors
+                        if (!emailOrUsernameError && !passwordError) {
+                            navController.navigate("HomeScreen")
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(60.dp),
@@ -242,6 +266,7 @@ fun LoginScreen(navController: NavController) {
                         fontWeight = FontWeight.Bold
                     )
                 }
+
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
                     currentTranslation["orConnectWith"]!!,
@@ -295,7 +320,6 @@ fun LoginScreen(navController: NavController) {
         }
     }
 }
-
 
 
 

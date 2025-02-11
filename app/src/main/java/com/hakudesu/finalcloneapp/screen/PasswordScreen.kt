@@ -30,8 +30,11 @@ fun PasswordScreen(navController: NavController) {
     var selectedLanguage by remember { mutableStateOf("en") }
     val username = remember { mutableStateOf("") }
     val phoneNumber = remember { mutableStateOf("") }
-    val password = remember { mutableStateOf("") }
-    val confirmPassword = remember { mutableStateOf("") }
+    var password = remember { mutableStateOf("") }
+    var confirmPassword = remember { mutableStateOf("") }
+    var passwordError = remember { mutableStateOf("") }
+    var confirmPasswordError = remember { mutableStateOf("") }
+    val minPasswordLength = 6
 
     val translations = mapOf(
         "en" to mapOf(
@@ -90,7 +93,7 @@ fun PasswordScreen(navController: NavController) {
                         horizontalArrangement = Arrangement.spacedBy(12.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .border(2.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(50.dp))
+                            .border(2.dp, color = Color(0xFFC04923), RoundedCornerShape(50.dp))
                             .padding(horizontal = 28.dp, vertical = 5.dp)
                     ) {
                         Button(
@@ -103,13 +106,19 @@ fun PasswordScreen(navController: NavController) {
                         }
 
                         Button(
-                            onClick = { selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                            onClick = {
+                                selectedLanguage = if (selectedLanguage == "en") "kh" else "en"
+                            },
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8C5EDE)),
 
                             shape = RoundedCornerShape(20.dp),
                             modifier = Modifier.size(width = 80.dp, height = 32.dp)
                         ) {
-                            Text(text = if (selectedLanguage == "en") "KH" else "EN", fontSize = 14.sp, color = MaterialTheme.colorScheme.onSecondary)
+                            Text(
+                                text = if (selectedLanguage == "en") "KH" else "EN",
+                                fontSize = 14.sp,
+                                color = MaterialTheme.colorScheme.onSecondary
+                            )
                         }
                     }
                 }
@@ -117,7 +126,11 @@ fun PasswordScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(50.dp))
                 Text(currentTranslation["signUp"]!!, fontSize = 42.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(30.dp))
-                Text(currentTranslation["enterPhone"]!!, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Text(
+                    currentTranslation["enterPhone"]!!,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
                 Spacer(modifier = Modifier.height(20.dp))
 
                 OutlinedTextField(
@@ -126,8 +139,12 @@ fun PasswordScreen(navController: NavController) {
                     label = { Text(currentTranslation["enterPassword"]!!, fontSize = 14.sp) },
                     visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(10.dp)
+                    shape = RoundedCornerShape(10.dp),
+                    isError = passwordError.value.isNotEmpty()
                 )
+                if (passwordError.value.isNotEmpty()) {
+                    Text(text = passwordError.value, color = Color.Red, fontSize = 12.sp)
+                }
                 Spacer(modifier = Modifier.height(10.dp))
                 OutlinedTextField(
                     value = confirmPassword.value,
@@ -135,13 +152,40 @@ fun PasswordScreen(navController: NavController) {
                     label = { Text(currentTranslation["confirmPassword"]!!, fontSize = 14.sp) },
                     visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(10.dp)
+                    shape = RoundedCornerShape(10.dp),
+                    isError = confirmPasswordError.value.isNotEmpty()
                 )
+                if (confirmPasswordError.value.isNotEmpty()) {
+                    Text(text = confirmPasswordError.value, color = Color.Red, fontSize = 12.sp)
+                }
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(currentTranslation["terms"]!!, fontSize = 16.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(100.dp))
                 Button(
-                    onClick = { navController.navigate("OTPScreen") },
+                    onClick = {
+                        // Clear previous errors
+                        passwordError.value = ""
+                        confirmPasswordError.value = ""
+
+                        // Validate password length
+                        if (password.value.length < minPasswordLength) {
+                            passwordError.value =
+                                currentTranslation["passwordTooShort"] ?: "Password too short"
+                            return@Button // Prevent navigation if validation fails
+                        }
+
+                        // Validate password match
+                        if (password.value != confirmPassword.value) {
+                            confirmPasswordError.value =
+                                currentTranslation["passwordMismatch"] ?: "Passwords do not match"
+                            return@Button // Prevent navigation if validation fails
+                        }
+
+                        // If validation passes, navigate to the OTP screen
+                        navController.navigate("OTPScreen")
+
+
+                    },
                     modifier = Modifier.fillMaxWidth().height(55.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF5722)),
                     shape = RoundedCornerShape(10.dp)

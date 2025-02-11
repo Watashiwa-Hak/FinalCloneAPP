@@ -40,8 +40,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.vector.ImageVector
 
 @Preview(showBackground = true)
 @Composable
@@ -55,6 +60,7 @@ fun HomeScreen(navController: NavController) {
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
     val textColor = if (isDarkMode) Color.White else Color.Black
+    var searchText by remember { mutableStateOf("") }
     // Define text color based on dark mode
 
 
@@ -67,10 +73,11 @@ fun HomeScreen(navController: NavController) {
             "nearbyHeader" to "Nearby Restaurants",
             "popRes" to "Popular Restaurants",
             "newArrivals" to "New arrivals up to 50% off",
-            "topShops" to " Top shops",
+            "topShops" to " Top Shops",
+            "topBrands" to " Top Brands",
 
 
-        ),
+            ),
         "kh" to mapOf(
             "deliveringTo" to "កំពុងដឹកជញ្ជូនទៅ",
             "orderNow" to "កម៉្មង់ឥឡូវនេះ",
@@ -80,235 +87,291 @@ fun HomeScreen(navController: NavController) {
             "popRes" to "ភោជនីយដ្ឋានពេញនិយម",
             "newArrivals" to "មកដល់ថ្មី បញ្ចុះតម្លៃរហូតដល់ 50%",
             "topShops" to "ហាង Top",
+            "topBrands" to "ប្រេន Top",
         )
     )
 
     val currentTranslation = translations[selectedLanguage]!!
+    Scaffold(
+        topBar = {Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 30.dp)
+                .background(color = Color(0xFFFFFFFF)),
 
-    MaterialTheme(
-        colors = if (isDarkMode) darkColors() else lightColors()
-    ) {
-        Surface(modifier = Modifier.fillMaxSize()) {
-            Column(
+            contentAlignment = Alignment.Center
+        ) {
+            Spacer(modifier = Modifier.height(30.dp))
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(10.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .border(2.dp, color = Color(0xFFFF5722), RoundedCornerShape(50.dp))
+                    .padding(horizontal = 28.dp, vertical = 5.dp)
             ) {
-                // Dark Mode Toggle and Language Selector
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 30.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .border(2.dp, androidx.compose.material3.MaterialTheme.colorScheme.primary, RoundedCornerShape(50.dp))
-                            .padding(horizontal = 28.dp, vertical = 5.dp)
-                    ) {
-                        Button(
-                            onClick = { isDarkMode = !isDarkMode },
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFFF8563)),
-                            shape = RoundedCornerShape(20.dp),
-                            modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                        ) {
-                            Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
-                        }
 
-                        Button(
-                            onClick = { selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF8C5EDE)),
-                            shape = RoundedCornerShape(20.dp),
-                            modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                        ) {
-                            Text(text = if (selectedLanguage == "en") "KH" else "EN", fontSize = 14.sp, color = Color(0xFF673AB7))
-                        }
-                    }
+                Button(
+                    onClick = { isDarkMode = !isDarkMode },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color(
+                            0xFFFF8563
+                        )
+                    ),
+                    shape = RoundedCornerShape(20.dp),
+                    modifier = Modifier.size(width = 80.dp, height = 32.dp)
+                ) {
+                    Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
                 }
 
-                Spacer(modifier = Modifier.height(10.dp))
-
-                // Delivering To and Hotel Name
-                Text(
-                    text = currentTranslation["deliveringTo"]!!,
-                    color = Color(0xFF_FF5722), // Keep this color fixed (e.g., for branding)
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                )
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                Button(
+                    onClick = {
+                        selectedLanguage = if (selectedLanguage == "en") "kh" else "en"
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color(
+                            0xFF8C5EDE
+                        )
+                    ),
+                    shape = RoundedCornerShape(20.dp),
+                    modifier = Modifier.size(width = 80.dp, height = 32.dp)
                 ) {
                     Text(
-                        text = "Caspian Sport Hotel",
+                        text = if (selectedLanguage == "en") "KH" else "EN",
+                        fontSize = 14.sp,
+                        color = Color(
+                            0xFFFFFFFF
+                        )
+                    )
+
+                }
+            }
+        }},
+        bottomBar = { Footer(navController) } // Footer will always stick at the bottom
+    ) { paddingValues ->
+        MaterialTheme(
+            colors = if (isDarkMode) darkColors() else lightColors()
+        ) {
+            Surface(modifier = Modifier.fillMaxSize()) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
+                        .padding(paddingValues)
+                        .padding(10.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // Dark Mode Toggle and Language Selector
+
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    // Delivering To and Hotel Name
+                    Text(
+                        text = currentTranslation["deliveringTo"]!!,
+                        color = Color(0xFF_FF5722), // Keep this color fixed (e.g., for branding)
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Caspian Sport Hotel",
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = textColor, // Use dynamic text color
+                            modifier = Modifier
+                                .padding(8.dp)
+                        )
+                        IconButton(
+                            onClick = { /* Edit action */ },
+                            modifier = Modifier
+                                .background(Color.LightGray, CircleShape)
+                                .padding(5.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = android.R.drawable.ic_menu_edit),
+                                contentDescription = "Edit"
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(14.dp))
+
+                    // Search Box
+                    OutlinedTextField(
+                        value = searchText,
+                        onValueChange = { searchText = it },
+                        placeholder = {
+                            Text(
+                                text = currentTranslation["searchBox"]?: "",
+                                color = Color.Gray,
+                            )
+                        },
+                        textStyle = TextStyle(
+                            color = Color(0x88000000),
+                            fontSize = 16.sp, // Adjust font size as needed
+                            fontWeight = FontWeight.Bold
+                        ),
+                        // Use dynamic text color
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp)
+                            .clip(RoundedCornerShape(50.dp)) // Keeps only the necessary modifier
+                            .border(1.dp, Color.LightGray, RoundedCornerShape(50.dp))
+
+                            .background(Color.White) // No need for extra RoundedCornerShape here
+                    )
+
+                    Spacer(modifier = Modifier.height(30.dp))
+
+                    // Carousel
+                    Carousel()
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    // Order Now Button
+                    Button(
+                        onClick = { /* Handle order now action */ },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF_FF5722)),
+                        elevation = ButtonDefaults.elevation(
+                            defaultElevation = 4.dp,
+                            pressedElevation = 8.dp
+                        )
+                    ) {
+                        Text(
+                            text = currentTranslation["orderNow"]!!,
+                            color = Color.White,
+                            fontSize = 17.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    // Categories Section
+                    Text(
+                        text = currentTranslation["categoriesHeader"]!!,
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Bold,
                         color = textColor, // Use dynamic text color
+                        textAlign = TextAlign.Start,
                         modifier = Modifier
+                            .fillMaxWidth()
                             .padding(8.dp)
                     )
-                    IconButton(
-                        onClick = { /* Edit action */ },
+                    Spacer(modifier = Modifier.height(10.dp))
+                    CategoriesSection(isDarkMode = isDarkMode)
+
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(20.dp))
+                    // Top shops Section
+                    Text(
+                        text = currentTranslation["topShops"]!!,
+                        fontSize = 26.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = textColor, // Use dynamic text color
+                        textAlign = TextAlign.Start,
                         modifier = Modifier
-                            .background(Color.LightGray, CircleShape)
+                            .fillMaxWidth()
                             .padding(8.dp)
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    TopShopsSection(isDarkMode = isDarkMode)
+
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(20.dp))
+                    // Top brands Section
+                    Text(
+                        text = currentTranslation["topBrands"]!!,
+                        fontSize = 26.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = textColor, // Use dynamic text color
+                        textAlign = TextAlign.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    TopBrandsSection(isDarkMode = isDarkMode)
+
+
+                    // Nearby Restaurants Section
+                    Text(
+                        text = currentTranslation["nearbyHeader"]!!,
+                        fontSize = 26.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = textColor, // Use dynamic text color
+                        textAlign = TextAlign.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    )
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(300.dp)
+                            .background(Color.LightGray) // Fallback background color
                     ) {
-                        Icon(
-                            painter = painterResource(id = android.R.drawable.ic_menu_edit),
-                            contentDescription = "Edit"
+                        // Background Image
+                        Image(
+                            painter = painterResource(id = R.drawable.map), // Replace with your drawable resource
+                            contentDescription = "Background Image",
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .alpha(0.5f), // Adjust opacity if needed
+                            contentScale = ContentScale.Crop // Adjust the scaling of the image
+                        )
+
+                        // Text Overlay
+                        Text(
+                            text = "Google Map will be here",
+                            modifier = Modifier.align(Alignment.Center),
+                            color = textColor, // Use dynamic text color
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold
                         )
                     }
-                }
+                    Spacer(modifier = Modifier.height(20.dp))
 
-                Spacer(modifier = Modifier.height(14.dp))
-
-                // Search Box
-                TextField(
-                    value = "",
-                    onValueChange = { /* Handle search input */ },
-                    placeholder = { Text(currentTranslation["searchBox"]!!, color = Color.Gray) },
-                    textStyle = TextStyle(color = textColor), // Use dynamic text color
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                        .border(1.dp, Color.LightGray, RoundedCornerShape(20.dp))
-                        .background(Color.White, RoundedCornerShape(20.dp))
-                        .clip(RoundedCornerShape(20.dp))
-                )
-
-                Spacer(modifier = Modifier.height(30.dp))
-
-                // Carousel
-                Carousel()
-
-                Spacer(modifier = Modifier.height(20.dp))
-
-                // Order Now Button
-                Button(
-                    onClick = { /* Handle order now action */ },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF_FF5722)),
-                    elevation = ButtonDefaults.elevation(
-                        defaultElevation = 4.dp,
-                        pressedElevation = 8.dp
-                    )
-                ) {
-                    Text(text = currentTranslation["orderNow"]!!, color = Color.White, fontSize = 17.sp)
-                }
-
-                Spacer(modifier = Modifier.height(20.dp))
-
-                // Categories Section
-                Text(
-                    text = currentTranslation["categoriesHeader"]!!,
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = textColor, // Use dynamic text color
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                CategoriesSection(isDarkMode = isDarkMode)
-
-                Spacer(modifier = Modifier.height(10.dp))
-                Spacer(modifier = Modifier.height(20.dp))
-                // Top shops Section
-                Text(
-                    text = currentTranslation["topShops"]!!,
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = textColor, // Use dynamic text color
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                TopShopsSection(isDarkMode = isDarkMode)
-
-
-
-                // Nearby Restaurants Section
-                Text(
-                    text = currentTranslation["nearbyHeader"]!!,
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = textColor, // Use dynamic text color
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                )
-                Spacer(modifier = Modifier.height(20.dp))
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(300.dp)
-                        .background(Color.LightGray) // Fallback background color
-                ) {
-                    // Background Image
-                    Image(
-                        painter = painterResource(id = R.drawable.map), // Replace with your drawable resource
-                        contentDescription = "Background Image",
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .alpha(0.5f), // Adjust opacity if needed
-                        contentScale = ContentScale.Crop // Adjust the scaling of the image
-                    )
-
-                    // Text Overlay
+                    // Popular Restaurants Section
                     Text(
-                        text = "Google Map will be here",
-                        modifier = Modifier.align(Alignment.Center),
+                        text = currentTranslation["popRes"]!!,
+                        fontSize = 26.sp,
+                        fontWeight = FontWeight.Bold,
                         color = textColor, // Use dynamic text color
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
+                        textAlign = TextAlign.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
                     )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    RestaurantScroll()
+                    Spacer(modifier = Modifier.height(20.dp))
+                    // New arrivals Section
+                    Text(
+                        text = currentTranslation["newArrivals"]!!,
+                        fontSize = 26.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = textColor,
+                        textAlign = TextAlign.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    NewArrivalScroll()
+
                 }
-                Spacer(modifier = Modifier.height(20.dp))
-
-                // Popular Restaurants Section
-                Text(
-                    text = currentTranslation["popRes"]!!,
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = textColor, // Use dynamic text color
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                RestaurantScroll()
-                Spacer(modifier = Modifier.height(20.dp))
-                // New arrivals Section
-                Text(
-                    text = currentTranslation["newArrivals"]!!,
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = textColor, // Use dynamic text color
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                NewArrivalScroll()
-
-
             }
         }
     }
@@ -317,9 +380,9 @@ fun HomeScreen(navController: NavController) {
 @Composable
 fun Carousel() {
     val images = listOf(
-        R.drawable.hamburger,
-        R.drawable.hamburger,
-        R.drawable.hamburger,
+        R.drawable.banner,
+        R.drawable.banner1,
+        R.drawable.banner3,
     )
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
@@ -357,7 +420,7 @@ fun Carousel() {
         ) {
             repeat(images.size) { index ->
                 val isActive = index == pagerState.currentPage
-                val color = if (isActive) Color(0xFF, 0x00, 0xFF) // RGB for active (purple)
+                val color = if (isActive) Color(0xFF, 0x57, 0x22, 0xFF) // RGB for active (purple)
                 else Color(0xCC, 0xCC, 0xCC) // RGB for inactive (light gray)
 
                 Box(
@@ -376,6 +439,7 @@ fun Carousel() {
         }
     }
 }
+
 
 @Composable
 fun CategoriesSection(isDarkMode: Boolean) {
@@ -522,7 +586,7 @@ fun NewArrivalScroll() {
             deliveryPrice = "$1.99"
         )
         NewArrivalCard(
-            imagePainter = painterResource(id = R.drawable.pizzafood),
+            imagePainter = painterResource(id = R.drawable.burgerfood),
             name = "Burger King",
             category = "American, Fast Food",
             discount = "Up to 40% OFF",
@@ -530,7 +594,7 @@ fun NewArrivalScroll() {
             deliveryPrice = "$2.99"
         )
         NewArrivalCard(
-            imagePainter = painterResource(id = R.drawable.pizzafood),
+            imagePainter = painterResource(id = R.drawable.sushifood),
             name = "Sushi Spot",
             category = "Japanese, Seafood",
             discount = "Up to 30% OFF",
@@ -538,15 +602,15 @@ fun NewArrivalScroll() {
             deliveryPrice = "$6.99"
         )
         NewArrivalCard(
-            imagePainter = painterResource(id = R.drawable.pizzafood),
-            name = "Pasta Delight",
+            imagePainter = painterResource(id = R.drawable.pastacornerfood),
+            name = "Pasta corner",
             category = "Italian, Vegetarian",
             discount = "Up to 35% OFF",
             deliveryDistance = "2.2 km",
             deliveryPrice = "$1.99"
         )
         NewArrivalCard(
-            imagePainter = painterResource(id = R.drawable.pizzafood),
+            imagePainter = painterResource(id = R.drawable.steakhousefood),
             name = "Steak House",
             category = "Grill, BBQ",
             discount = "Up to 25% OFF",
@@ -694,3 +758,138 @@ fun TopShopItem(shop: Shop, textColor: Color) {
 }
 
 data class Shop(val imageResId: Int, val name: String, val distance: String)
+
+@Composable
+fun TopBrandsSection(isDarkMode: Boolean) {
+    val topBrands = listOf(
+        Brand(R.drawable.dairyqueenlogo, "Diary Queen", "15-20 min"),
+        Brand(R.drawable.starbucklogo, "Starbucks", "20-30 min"),
+        Brand(R.drawable.texaslogo, "Texas Chicken", "10-20 min"),
+        Brand(R.drawable.pizzalogo, "The Pizza Company", "25-35 min"),
+        Brand(R.drawable.chatimelogo, "Chatime", "15-20 min"),
+        Brand(R.drawable.dominologo, "Domino's Pizza", "20-30 min"),
+    )
+
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        items(topBrands.size) { index ->
+            TopBrandsItem(brand = topBrands[index], textColor = if (isDarkMode) Color.White else Color.Black)
+        }
+    }
+}
+
+@Composable
+fun TopBrandsItem(brand: Brand, textColor: Color) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .padding(15.dp)
+            .width(120.dp)
+    ) {
+        Image(
+            painter = painterResource(id = brand.imageResId),
+            contentDescription = brand.name,
+            modifier = Modifier
+                .size(80.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(Color.LightGray)
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        Text(
+            text = brand.name,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = textColor,
+            modifier = Modifier.padding(vertical = 5.dp),
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = brand.distance,
+            fontSize = 14.sp,
+            color = Color.Gray,
+            modifier = Modifier.padding(bottom = 5.dp)
+        )
+    }
+}
+
+data class Brand(val imageResId: Int, val name: String, val distance: String)
+
+
+
+
+
+@Composable
+fun Footer(navController: NavController) {
+    // Footer content
+    BottomAppBar(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(60.dp),
+        backgroundColor = Color(0xFFF6F6F6),
+        elevation = 8.dp
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Food Icon and Label
+            FooterItem(
+                icon = "🍔",
+                label = "Food",
+                onClick = { navController.navigate("HomeScreen") }
+            )
+
+            // Restaurant Icon and Label
+            FooterItem(
+                icon = "🍽️",
+                label = "Restaurant",
+                onClick = {navController.navigate("RestaurantScreen") }
+            )
+
+            // Search Icon and Label
+            FooterItem(
+                icon = Icons.Default.ShoppingCart,
+                label = "My Cart",
+                onClick = {navController.navigate("CartScreen")}
+            )
+
+            // Account Icon and Label
+            FooterItem(
+                icon = Icons.Default.Person,
+                label = "Account",
+                onClick = { /* Handle Account click */ }
+            )
+        }
+    }
+}
+
+@Composable
+fun FooterItem(icon: Any, label: String, onClick: () -> Unit) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.clickable(onClick = onClick)
+    ) {
+        when (icon) {
+            is ImageVector -> Icon(
+                imageVector = icon,
+                contentDescription = label,
+                modifier = Modifier.size(24.dp),
+                tint = Color(0xFFFF5722)
+            )
+            is String -> Text(
+                text = icon, // Use Text for emojis
+                fontSize = 24.sp
+            )
+        }
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = label,
+            fontSize = 12.sp,
+            color = Color.Black // Customize text color
+        )
+    }
+}
