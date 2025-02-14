@@ -1,0 +1,128 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/HomeScreen.kt</file>
+  <line>11</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/HomeScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>25</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/InfoScreen.kt</file>
+  <line>9</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/InfoScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material.Button</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>32</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/InfoScreen.kt</file>
+  <line>10</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/InfoScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material.Text</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/InfoScreen.kt</file>
+  <line>11</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/InfoScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material.TextField</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/PaymentMethodScreen.kt</file>
+  <line>9</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/PaymentMethodScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>25</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantScreen.kt</file>
+  <line>9</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material.Surface</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>33</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantScreen.kt</file>
+  <line>22</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material.Button</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>32</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantScreen.kt</file>
+  <line>23</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material.ButtonDefaults</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>40</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantScreen.kt</file>
+  <line>24</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantScreen.kt" />
+  <problem_class id="AndroidLintUsingMaterialAndMaterial3Libraries" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">material and material3 are separate, incompatible design system libraries</problem_class>
+  <hints />
+  <description>&lt;html&gt;Using a material import while also using the material3 library&lt;/html&gt;</description>
+  <highlighted_element>androidx.compose.material.Scaffold</highlighted_element>
+  <language>kotlin</language>
+  <offset>7</offset>
+  <length>34</length>
+</problem>
+</problems>

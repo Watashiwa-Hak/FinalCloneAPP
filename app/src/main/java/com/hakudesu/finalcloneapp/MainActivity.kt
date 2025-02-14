@@ -1,6 +1,6 @@
 package com.hakudesu.finalcloneapp
 
-import CartScreen
+import com.hakudesu.finalcloneapp.screen.CartScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,6 +24,8 @@ import com.hakudesu.finalcloneapp.screen.OTPScreen
 import com.hakudesu.finalcloneapp.screen.PasswordScreen
 import com.hakudesu.finalcloneapp.screen.PaymentMethodScreen
 import com.hakudesu.finalcloneapp.screen.PaymentScreen
+import com.hakudesu.finalcloneapp.screen.ProfileScreen
+import com.hakudesu.finalcloneapp.screen.RestaurantProfileScreen
 import com.hakudesu.finalcloneapp.screen.RestaurantScreen
 import com.hakudesu.finalcloneapp.screen.SplashScreen
 
@@ -54,7 +56,29 @@ fun AppNavigation(navController: NavController) {
         composable("OTPScreen") { OTPScreen(navController) }
         composable("HomeScreen") { HomeScreen(navController) }
         composable("cartScreen") { CartScreen(navController) }
-        composable("RestaurantScreen") { RestaurantScreen(navController) }
+        composable("restaurantScreen") { RestaurantScreen(navController) }
+        composable(
+            "restaurantProfile/{name}/{rating}/{deliveryTime}/{cuisine}/{imageRes}",
+            arguments = listOf(
+                navArgument("name") { type = NavType.StringType },
+                navArgument("rating") { type = NavType.StringType },
+                navArgument("deliveryTime") { type = NavType.StringType },
+                navArgument("cuisine") { type = NavType.StringType },
+                navArgument("imageRes") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            val name = backStackEntry.arguments?.getString("name") ?: ""
+            val rating = backStackEntry.arguments?.getString("rating") ?: ""
+            val deliveryTime = backStackEntry.arguments?.getString("deliveryTime") ?: ""
+            val cuisine = backStackEntry.arguments?.getString("cuisine") ?: ""
+            val imageRes = backStackEntry.arguments?.getInt("imageRes") ?: R.drawable.logo
+
+            RestaurantProfileScreen(navController, name, rating, deliveryTime, cuisine, imageRes)
+        }
+
+
+        composable("ProfileScreen") { ProfileScreen(navController) }
+
 
         composable("PaymentMethodScreen") { PaymentMethodScreen(navController) }
         composable(

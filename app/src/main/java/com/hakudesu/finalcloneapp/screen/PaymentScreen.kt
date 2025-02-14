@@ -122,7 +122,8 @@ fun PaymentScreen(
                     }
                 }
             }
-        }
+        },
+                bottomBar = { Footer(navController) }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -247,7 +248,7 @@ fun PaymentCartItemView(item: CartItem, isDarkMode: Boolean, textColor: Color) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
+            .padding(vertical = 8.dp, horizontal = 20.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(color = if (isDarkMode) Color(0xFF1E1E1E) else Color(0x8183989A))
             .height(80.dp),

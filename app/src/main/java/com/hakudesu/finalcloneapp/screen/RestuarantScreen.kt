@@ -3,6 +3,7 @@ package com.hakudesu.finalcloneapp.screen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -29,6 +30,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 
 @Composable
@@ -120,7 +122,7 @@ fun RestaurantScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(10.dp))
             RestaurantScroll()
             Spacer(modifier = Modifier.height(20.dp))
-            RestaurantList(isDarkMode, textColor, currentTranslation)
+            RestaurantList(navController = navController, isDarkMode = isDarkMode, textColor = textColor, translation = currentTranslation)
 
         }
     }
@@ -134,14 +136,29 @@ data class Restaurant(
 )
 
 val restaurantList = listOf(
-    Restaurant(R.drawable.pizzacompany, "Pizza Company", "⭐ 4.5", "🚴 30-40 min", "Italian, Fast Food"),
-    Restaurant(R.drawable.bk, "Burger King", "⭐ 4.2", "🚴 25-35 min", "American, Fast Food"),
-    Restaurant(R.drawable.sushires, "Sushi Spot", "⭐ 4.7", "🚴 40-50 min", "Japanese, Seafood"),
-    Restaurant(R.drawable.pastacornerres, "Pasta Corner", "⭐ 4.3", "🚴 20-30 min", "Italian, Vegetarian"),
-    Restaurant(R.drawable.streakhouseres, "306 Wagyu Steakhouse", "⭐ 4.6", "🚴 35-45 min", "Grill, BBQ")
+    Restaurant(R.drawable.pizzacompany, "Pizza Company", " 4.5", " 30-40 min", "Italian, Fast Food"),
+    Restaurant(R.drawable.bk, "Burger King", " 4.2", " 25-35 min", "American, Fast Food"),
+    Restaurant(R.drawable.sushires, "Sushi Spot", " 4.7", " 40-50 min", "Japanese, Seafood"),
+    Restaurant(R.drawable.pastacornerres, "Pasta Corner", " 4.3", " 20-30 min", "Italian, Vegetarian"),
+    Restaurant(R.drawable.streakhouseres, "306 Wagyu Steakhouse", " 4.6", " 35-45 min", "Grill, BBQ"),
+    Restaurant(R.drawable.pizzacompany, "Pizza Company", " 4.5", " 30-40 min", "Italian, Fast Food"),
+    Restaurant(R.drawable.bk, "Burger King", " 4.2", " 25-35 min", "American, Fast Food"),
+    Restaurant(R.drawable.sushires, "Sushi Spot", " 4.7", " 40-50 min", "Japanese, Seafood"),
+    Restaurant(R.drawable.pastacornerres, "Pasta Corner", " 4.3", " 20-30 min", "Italian, Vegetarian"),
+    Restaurant(R.drawable.streakhouseres, "306 Wagyu Steakhouse", " 4.6", " 35-45 min", "Grill, BBQ"),
+    Restaurant(R.drawable.pizzacompany, "Pizza Company", " 4.5", " 30-40 min", "Italian, Fast Food"),
+    Restaurant(R.drawable.bk, "Burger King", " 4.2", " 25-35 min", "American, Fast Food"),
+    Restaurant(R.drawable.sushires, "Sushi Spot", " 4.7", " 40-50 min", "Japanese, Seafood"),
+    Restaurant(R.drawable.pastacornerres, "Pasta Corner", " 4.3", " 20-30 min", "Italian, Vegetarian"),
+    Restaurant(R.drawable.streakhouseres, "306 Wagyu Steakhouse", " 4.6", " 35-45 min", "Grill, BBQ"),
 )
 @Composable
-fun RestaurantList(isDarkMode: Boolean, textColor: Color, translation: Map<String, String>) {
+fun RestaurantList(
+    navController: NavController, // Pass the correct NavController
+    isDarkMode: Boolean,
+    textColor: Color,
+    translation: Map<String, String>
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -157,53 +174,40 @@ fun RestaurantList(isDarkMode: Boolean, textColor: Color, translation: Map<Strin
                 modifier = Modifier.padding(bottom = 16.dp)
             )
         }
-        items(restaurantList) { restaurant ->  // Corrected here
-            RestaurantCard(
-                imageRes = restaurant.imageRes,
-                name = restaurant.name,
-                rating = restaurant.rating,
-                deliveryTime = restaurant.deliveryTime,
-                cuisine = restaurant.cuisine
-            )
+        items(restaurantList) { restaurant ->
+            RestaurantCard(navController, restaurant) // Pass the main NavController
         }
     }
 }
 
-
 @Composable
-fun RestaurantCard(
-    imageRes: Int,
-    name: String,
-    rating: String,
-    deliveryTime: String,
-    cuisine: String
-) {
+fun RestaurantCard(navController: NavController, restaurant: Restaurant) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 16.dp)
-            .clip(RoundedCornerShape(10.dp)),
+            .padding(8.dp)
+            .clickable {
+                navController.navigate("restaurantProfile/${restaurant.name}/${restaurant.rating}/${restaurant.deliveryTime}/${restaurant.cuisine}/${restaurant.imageRes}")
+            },
+        shape = RoundedCornerShape(10.dp),
         color = Color.White
     ) {
-        Column(modifier = Modifier.padding(8.dp)) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Image(
-                painter = painterResource(id = imageRes),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp),
+                painter = painterResource(id = restaurant.imageRes),
+                contentDescription = restaurant.name,
+                modifier = Modifier.size(64.dp).clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = name, fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.height(4.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text = rating, fontSize = 16.sp, color = Color(0xFFFF9800))
-                Text(text = deliveryTime, fontSize = 14.sp, color = Color.Gray)
-                Text(text = cuisine, fontSize = 14.sp, color = Color.Gray)
+            Spacer(modifier = Modifier.width(16.dp))
+            Column {
+                Text(restaurant.name, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                Text(restaurant.cuisine, fontSize = 14.sp, color = Color.Gray)
+                Text(restaurant.rating, fontSize = 14.sp, color = Color(0xFFFFC107))
+                Text(restaurant.deliveryTime, fontSize = 14.sp, color = Color(0xFF4CAF50))
             }
         }
     }

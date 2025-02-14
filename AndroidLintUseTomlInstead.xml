@@ -1,0 +1,128 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>45</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;com.google.android.libraries.places:places:3.3.0&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>20</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>46</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;com.google.maps.android:maps-compose:2.13.1&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>20</offset>
+  <length>45</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>47</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;com.google.android.gms:play-services-maps:18.1.0&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>20</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>48</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;androidx.compose.material3:material3:1.1.2&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>20</offset>
+  <length>44</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>49</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;io.coil-kt:coil-compose:2.4.0&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>20</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>50</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;com.google.accompanist:accompanist-pager:0.30.1&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>20</offset>
+  <length>49</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>51</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;com.google.accompanist:accompanist-pager-indicators:0.30.1&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>20</offset>
+  <length>60</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>52</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;androidx.compose.material3:material3:1.0.0&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>20</offset>
+  <length>44</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/build.gradle.kts</file>
+  <line>53</line>
+  <module>FinalCloneAPP.app</module>
+  <package>&lt;default&gt;</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/build.gradle.kts" />
+  <problem_class id="AndroidLintUseTomlInstead" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Use TOML Version Catalog Instead</problem_class>
+  <hints />
+  <description>&lt;html&gt;Use version catalog instead&lt;/html&gt;</description>
+  <highlighted_element>&quot;androidx.navigation:navigation-compose:2.7.5&quot;</highlighted_element>
+  <language>kotlin</language>
+  <offset>19</offset>
+  <length>46</length>
+</problem>
+</problems>

@@ -1,0 +1,29 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml</file>
+  <line>16</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+  <problem_class id="AndroidLintObsoleteSdkInt" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Obsolete SDK_INT Version Check</problem_class>
+  <hints />
+  <description>&lt;html&gt;Unnecessary; SDK_INT is always &gt;= 31&lt;/html&gt;</description>
+  <highlighted_element>tools:targetApi=&quot;31&quot;</highlighted_element>
+  <language>XML</language>
+  <offset>8</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Theme.kt</file>
+  <line>55</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.ui.theme</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Theme.kt" />
+  <problem_class id="AndroidLintObsoleteSdkInt" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Obsolete SDK_INT Version Check</problem_class>
+  <hints />
+  <description>&lt;html&gt;Unnecessary; SDK_INT is always &gt;= 34&lt;/html&gt;</description>
+  <highlighted_element>Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.S</highlighted_element>
+  <language>kotlin</language>
+  <offset>24</offset>
+  <length>46</length>
+</problem>
+</problems>

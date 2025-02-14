@@ -200,7 +200,7 @@ fun InfoScreen(navController: NavController, totalPrice: Float) {
                 value = fullName.value,
                 onValueChange = { fullName.value = it },
                 label = { Text(currentTranslation["FullName"]!!, color = textColor) },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color(0xFFFF5722),
                     unfocusedBorderColor = Color.Gray,
@@ -225,7 +225,7 @@ fun InfoScreen(navController: NavController, totalPrice: Float) {
                 value = tel.value,
                 onValueChange = { tel.value = it },
                 label = { Text(currentTranslation["Telephone"]!!, color = textColor) },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color(0xFFFF5722),
                     unfocusedBorderColor = Color.Gray,
@@ -250,7 +250,7 @@ fun InfoScreen(navController: NavController, totalPrice: Float) {
                 value = address.value,
                 onValueChange = { address.value = it },
                 label = { Text(currentTranslation["Address"]!!, color = textColor) },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color(0xFFFF5722),
                     unfocusedBorderColor = Color.Gray,
@@ -276,7 +276,7 @@ fun InfoScreen(navController: NavController, totalPrice: Float) {
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = textColor,
-                modifier = Modifier.padding(vertical = 8.dp, horizontal = 10.dp)
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 20.dp)
             )
 
             Spacer(modifier = Modifier.height(50.dp))

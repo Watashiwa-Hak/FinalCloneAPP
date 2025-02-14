@@ -1,0 +1,257 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/androidTest/java/com/hakudesu/finalcloneapp/ExampleInstrumentedTest.kt</file>
+  <line>11</line>
+  <module>FinalCloneAPP.app.androidTest</module>
+  <package>com.hakudesu.finalcloneapp</package>
+  <entry_point TYPE="class" FQNAME="com.hakudesu.finalcloneapp.ExampleInstrumentedTest" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>3</length>
+  <highlighted_element>/**</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Class is not instantiated.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/androidTest/java/com/hakudesu/finalcloneapp/ExampleInstrumentedTest.kt</file>
+  <line>18</line>
+  <module>FinalCloneAPP.app.androidTest</module>
+  <package>com.hakudesu.finalcloneapp</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.ExampleInstrumentedTest void useAppContext()" />
+  <language>kotlin</language>
+  <offset>4</offset>
+  <length>5</length>
+  <highlighted_element>@Test</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/MainActivity.kt</file>
+  <line>31</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp</package>
+  <entry_point TYPE="class" FQNAME="com.hakudesu.finalcloneapp.MainActivity" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>42</length>
+  <highlighted_element>class MainActivity : ComponentActivity() {</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Class is not instantiated.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/CartScreen.kt</file>
+  <line>35</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.CartScreenKt void CartScreenPreview()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/GooglePasswordScreen.kt</file>
+  <line>173</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.GooglePasswordScreenKt void PreviewGooglePasswordScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>73</length>
+  <highlighted_element>@Preview(showBackground = true, device = &quot;spec:width=411dp,height=891dp&quot;)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/GoogleScreen.kt</file>
+  <line>232</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.GoogleScreenKt void PreviewGoogleSignInScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/HomeScreen.kt</file>
+  <line>51</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.HomeScreenKt void PreviewHomeScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/LoginScreen.kt</file>
+  <line>46</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.LoginScreenKt void PreviewLoginScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/OTPScreen.kt</file>
+  <line>25</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.OTPScreenKt void PreviewOTPScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/PasswordScreen.kt</file>
+  <line>20</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.PasswordScreenKt void PreviewPasswordScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/PaymentScreen.kt</file>
+  <line>274</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.PaymentScreenKt void PaymentScreenPreview()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/ProfileScreen.kt</file>
+  <line>175</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.ProfileScreenKt void PreviewProfileScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RegisterScreen.kt</file>
+  <line>20</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.RegisterScreenKt void PreviewRegisterScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>31</length>
+  <highlighted_element>@Preview(showBackground = true)</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/test/java/com/hakudesu/finalcloneapp/ExampleUnitTest.kt</file>
+  <line>7</line>
+  <module>FinalCloneAPP.app.unitTest</module>
+  <package>com.hakudesu.finalcloneapp</package>
+  <entry_point TYPE="class" FQNAME="com.hakudesu.finalcloneapp.ExampleUnitTest" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>3</length>
+  <highlighted_element>/**</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Class is not instantiated.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/test/java/com/hakudesu/finalcloneapp/ExampleUnitTest.kt</file>
+  <line>13</line>
+  <module>FinalCloneAPP.app.unitTest</module>
+  <package>com.hakudesu.finalcloneapp</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.ExampleUnitTest void addition_isCorrect()" />
+  <language>kotlin</language>
+  <offset>4</offset>
+  <length>5</length>
+  <highlighted_element>@Test</highlighted_element>
+  <problem_class id="" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+</problems>

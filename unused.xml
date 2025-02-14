@@ -1,0 +1,237 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/MainActivity.kt</file>
+  <line>48</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.MainActivityKt void AppNavigation(androidx.navigation.NavController navController)" />
+  <problem_class id="unused" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unused declaration</problem_class>
+  <hints>
+    <hint value="navController" />
+  </hints>
+  <description>Parameter &lt;code&gt;navController&lt;/code&gt; is not used</description>
+  <highlighted_element>navController</highlighted_element>
+  <language>kotlin</language>
+  <offset>18</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/PaymentMethodScreen.kt</file>
+  <line>38</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.PaymentMethodScreenKt void PaymentMethodScreen(androidx.navigation.NavController navController)" />
+  <problem_class id="unused" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unused declaration</problem_class>
+  <hints>
+    <hint value="navController" />
+  </hints>
+  <description>Parameter &lt;code&gt;navController&lt;/code&gt; is not used</description>
+  <highlighted_element>navController</highlighted_element>
+  <language>kotlin</language>
+  <offset>24</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/ProfileScreen.kt</file>
+  <line>35</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.ProfileScreenKt void ProfileScreen(androidx.navigation.NavController navController)" />
+  <problem_class id="unused" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unused declaration</problem_class>
+  <hints>
+    <hint value="navController" />
+  </hints>
+  <description>Parameter &lt;code&gt;navController&lt;/code&gt; is not used</description>
+  <highlighted_element>navController</highlighted_element>
+  <language>kotlin</language>
+  <offset>18</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantProfileScreen.kt</file>
+  <line>22</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.screen.RestuarantProfileScreenKt void RestaurantProfileScreen()" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>11</length>
+  <highlighted_element>@Composable</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt</file>
+  <line>5</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.ui.theme</package>
+  <entry_point TYPE="field" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt Purple80" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>32</length>
+  <highlighted_element>val Purple80 = Color(0xFFD0BCFF)</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Field is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt</file>
+  <line>6</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.ui.theme</package>
+  <entry_point TYPE="field" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt PurpleGrey80" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>36</length>
+  <highlighted_element>val PurpleGrey80 = Color(0xFFCCC2DC)</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Field is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt</file>
+  <line>7</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.ui.theme</package>
+  <entry_point TYPE="field" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt Pink80" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>30</length>
+  <highlighted_element>val Pink80 = Color(0xFFEFB8C8)</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Field is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt</file>
+  <line>9</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.ui.theme</package>
+  <entry_point TYPE="field" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt Purple40" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>32</length>
+  <highlighted_element>val Purple40 = Color(0xFF6650a4)</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Field is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt</file>
+  <line>10</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.ui.theme</package>
+  <entry_point TYPE="field" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt PurpleGrey40" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>36</length>
+  <highlighted_element>val PurpleGrey40 = Color(0xFF625b71)</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Field is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt</file>
+  <line>11</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.ui.theme</package>
+  <entry_point TYPE="field" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Color.kt Pink40" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>30</length>
+  <highlighted_element>val Pink40 = Color(0xFF7D5260)</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Field is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/ui/theme/Theme.kt</file>
+  <line>47</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.ui.theme</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.ui.theme.ThemeKt void FinalCloneAPPTheme(boolean darkTheme, boolean dynamicColor, androidx.compose.runtime.internal.ComposableFunction0&lt;kotlin.Unit&gt; content)" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>11</length>
+  <highlighted_element>@Composable</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/viewmodels/CartViewModel.kt</file>
+  <line>14</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.viewmodels</package>
+  <entry_point TYPE="field" FQNAME="com.hakudesu.finalcloneapp.viewmodels.CartViewModel cartState" />
+  <language>kotlin</language>
+  <offset>4</offset>
+  <length>48</length>
+  <highlighted_element>val cartState: StateFlow&lt;CartModel&gt; = _cartState</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Field is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/viewmodels/CartViewModel.kt</file>
+  <line>16</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.viewmodels</package>
+  <entry_point TYPE="method" FQNAME="com.hakudesu.finalcloneapp.viewmodels.CartViewModel void updateUserInfo(java.lang.String fullName, java.lang.String tel, java.lang.String address)" />
+  <language>kotlin</language>
+  <offset>4</offset>
+  <length>68</length>
+  <highlighted_element>fun updateUserInfo(fullName: String, tel: String, address: String) {</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Method is never used.</description>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/hakudesu/finalcloneapp/screen/RestuarantProfileScreen.kt</file>
+  <line>128</line>
+  <module>FinalCloneAPP.app.main</module>
+  <package>com.hakudesu.finalcloneapp.screen</package>
+  <entry_point TYPE="class" FQNAME="com.hakudesu.finalcloneapp.screen.MenuItem" />
+  <language>kotlin</language>
+  <offset>0</offset>
+  <length>43</length>
+  <highlighted_element>// Define the MenuItem data class correctly</highlighted_element>
+  <problem_class id="unused" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">unused declaration</problem_class>
+  <hints>
+    <hint value="comment" />
+    <hint value="delete" />
+  </hints>
+  <description>Class is not instantiated.</description>
+</problem>
+</problems>

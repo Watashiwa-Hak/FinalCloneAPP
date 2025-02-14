@@ -1,5 +1,6 @@
 package com.hakudesu.finalcloneapp.screen
 
+import android.R.attr.textColor
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -39,6 +40,8 @@ import kotlinx.coroutines.launch
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
@@ -53,16 +56,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 fun PreviewHomeScreen() {
     HomeScreen(navController = rememberNavController())
 }
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController) {
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
     val textColor = if (isDarkMode) Color.White else Color.Black
     var searchText by remember { mutableStateOf("") }
-    // Define text color based on dark mode
-
 
     val translations = mapOf(
         "en" to mapOf(
@@ -75,9 +74,9 @@ fun HomeScreen(navController: NavController) {
             "newArrivals" to "New arrivals up to 50% off",
             "topShops" to " Top Shops",
             "topBrands" to " Top Brands",
-
-
-            ),
+            "foodMenu" to "Food Menu",
+            "price" to "Price",
+        ),
         "kh" to mapOf(
             "deliveringTo" to "កំពុងដឹកជញ្ជូនទៅ",
             "orderNow" to "កម៉្មង់ឥឡូវនេះ",
@@ -86,12 +85,15 @@ fun HomeScreen(navController: NavController) {
             "nearbyHeader" to "ភោជនីយដ្ឋានដែលនៅជិត",
             "popRes" to "ភោជនីយដ្ឋានពេញនិយម",
             "newArrivals" to "មកដល់ថ្មី បញ្ចុះតម្លៃរហូតដល់ 50%",
-            "topShops" to "ហាង Top",
-            "topBrands" to "ប្រេន Top",
+            "topShops" to "Top ហាង ",
+            "topBrands" to "Top ប្រេន ",
+            "foodMenu" to "មីនុយម្ហូប",
+            "price" to "តម្លៃ",
         )
     )
 
     val currentTranslation = translations[selectedLanguage]!!
+
     Scaffold(
         topBar = {Box(
             modifier = Modifier
@@ -146,231 +148,232 @@ fun HomeScreen(navController: NavController) {
                 }
             }
         }},
-        bottomBar = { Footer(navController) } // Footer will always stick at the bottom
+        bottomBar = { Footer(navController) }
     ) { paddingValues ->
         MaterialTheme(
             colors = if (isDarkMode) darkColors() else lightColors()
         ) {
             Surface(modifier = Modifier.fillMaxSize()) {
-                Column(
+                LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
-                        .verticalScroll(rememberScrollState())
                         .padding(paddingValues)
                         .padding(10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // Dark Mode Toggle and Language Selector
-
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
                     // Delivering To and Hotel Name
-                    Text(
-                        text = currentTranslation["deliveringTo"]!!,
-                        color = Color(0xFF_FF5722), // Keep this color fixed (e.g., for branding)
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp)
-                    )
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
+                    item {
                         Text(
-                            text = "Caspian Sport Hotel",
-                            fontSize = 26.sp,
+                            text = currentTranslation["deliveringTo"]!!,
+                            color = Color(0xFF_FF5722),
+                            fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            color = textColor, // Use dynamic text color
+                            textAlign = TextAlign.Start,
                             modifier = Modifier
+                                .fillMaxWidth()
                                 .padding(8.dp)
                         )
-                        IconButton(
-                            onClick = { /* Edit action */ },
-                            modifier = Modifier
-                                .background(Color.LightGray, CircleShape)
-                                .padding(5.dp)
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Icon(
-                                painter = painterResource(id = android.R.drawable.ic_menu_edit),
-                                contentDescription = "Edit"
+                            Text(
+                                text = "Caspian Sport Hotel",
+                                fontSize = 26.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = textColor,
+                                modifier = Modifier.padding(8.dp)
+                            )
+                            IconButton(
+                                onClick = { /* Edit action */ },
+                                modifier = Modifier
+                                    .background(Color.LightGray, CircleShape)
+                                    .padding(5.dp)
+                            ) {
+                                Icon(
+                                    painter = painterResource(id = android.R.drawable.ic_menu_edit),
+                                    contentDescription = "Edit"
+                                )
+                            }
+                        }
+                    }
+
+                    // Search Box
+                    item {
+                        OutlinedTextField(
+                            value = searchText,
+                            onValueChange = { searchText = it },
+                            placeholder = {
+                                Text(
+                                    text = currentTranslation["searchBox"] ?: "",
+                                    color = Color.Gray,
+                                )
+                            },
+                            textStyle = TextStyle(
+                                color = Color(0x88000000),
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 20.dp)
+                                .clip(RoundedCornerShape(50.dp))
+                                .border(1.dp, Color.LightGray, RoundedCornerShape(50.dp))
+                                .background(Color.White)
+                        )
+                    }
+
+                    // Carousel
+                    item {
+                        Carousel()
+                    }
+
+                    // Order Now Button
+                    item {
+                        Button(
+                            onClick = { /* Handle order now action */ },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(50.dp),
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF_FF5722)),
+                            elevation = ButtonDefaults.elevation(
+                                defaultElevation = 4.dp,
+                                pressedElevation = 8.dp
+                            )
+                        ) {
+                            Text(
+                                text = currentTranslation["orderNow"]!!,
+                                color = Color.White,
+                                fontSize = 17.sp
                             )
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(14.dp))
-
-                    // Search Box
-                    OutlinedTextField(
-                        value = searchText,
-                        onValueChange = { searchText = it },
-                        placeholder = {
-                            Text(
-                                text = currentTranslation["searchBox"]?: "",
-                                color = Color.Gray,
-                            )
-                        },
-                        textStyle = TextStyle(
-                            color = Color(0x88000000),
-                            fontSize = 16.sp, // Adjust font size as needed
-                            fontWeight = FontWeight.Bold
-                        ),
-                        // Use dynamic text color
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 20.dp)
-                            .clip(RoundedCornerShape(50.dp)) // Keeps only the necessary modifier
-                            .border(1.dp, Color.LightGray, RoundedCornerShape(50.dp))
-
-                            .background(Color.White) // No need for extra RoundedCornerShape here
-                    )
-
-                    Spacer(modifier = Modifier.height(30.dp))
-
-                    // Carousel
-                    Carousel()
-
-                    Spacer(modifier = Modifier.height(20.dp))
-
-                    // Order Now Button
-                    Button(
-                        onClick = { /* Handle order now action */ },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp),
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF_FF5722)),
-                        elevation = ButtonDefaults.elevation(
-                            defaultElevation = 4.dp,
-                            pressedElevation = 8.dp
-                        )
-                    ) {
+                    // Categories Section
+                    item {
                         Text(
-                            text = currentTranslation["orderNow"]!!,
-                            color = Color.White,
-                            fontSize = 17.sp
+                            text = currentTranslation["categoriesHeader"]!!,
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = textColor,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
                         )
+                        CategoriesSection(isDarkMode = isDarkMode)
                     }
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                    // Top Shops Section
+                    item {
+                        Text(
+                            text = currentTranslation["topShops"]!!,
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = textColor,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        )
+                        TopShopsSection(isDarkMode = isDarkMode)
+                    }
 
-                    // Categories Section
-                    Text(
-                        text = currentTranslation["categoriesHeader"]!!,
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor, // Use dynamic text color
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    CategoriesSection(isDarkMode = isDarkMode)
-
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Spacer(modifier = Modifier.height(20.dp))
-                    // Top shops Section
-                    Text(
-                        text = currentTranslation["topShops"]!!,
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor, // Use dynamic text color
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    TopShopsSection(isDarkMode = isDarkMode)
-
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Spacer(modifier = Modifier.height(20.dp))
-                    // Top brands Section
-                    Text(
-                        text = currentTranslation["topBrands"]!!,
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor, // Use dynamic text color
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    TopBrandsSection(isDarkMode = isDarkMode)
-
+                    // Top Brands Section
+                    item {
+                        Text(
+                            text = currentTranslation["topBrands"]!!,
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = textColor,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        )
+                        TopBrandsSection(isDarkMode = isDarkMode)
+                    }
 
                     // Nearby Restaurants Section
-                    Text(
-                        text = currentTranslation["nearbyHeader"]!!,
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor, // Use dynamic text color
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(300.dp)
-                            .background(Color.LightGray) // Fallback background color
-                    ) {
-                        // Background Image
-                        Image(
-                            painter = painterResource(id = R.drawable.map), // Replace with your drawable resource
-                            contentDescription = "Background Image",
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .alpha(0.5f), // Adjust opacity if needed
-                            contentScale = ContentScale.Crop // Adjust the scaling of the image
-                        )
-
-                        // Text Overlay
+                    item {
                         Text(
-                            text = "Google Map will be here",
-                            modifier = Modifier.align(Alignment.Center),
-                            color = textColor, // Use dynamic text color
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold
+                            text = currentTranslation["nearbyHeader"]!!,
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = textColor,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
                         )
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(300.dp)
+                                .background(Color.LightGray)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.map),
+                                contentDescription = "Background Image",
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .alpha(0.5f),
+                                contentScale = ContentScale.Crop
+                            )
+                            Text(
+                                text = "Google Map will be here",
+                                modifier = Modifier.align(Alignment.Center),
+                                color = textColor,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
                     }
-                    Spacer(modifier = Modifier.height(20.dp))
 
                     // Popular Restaurants Section
-                    Text(
-                        text = currentTranslation["popRes"]!!,
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor, // Use dynamic text color
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    RestaurantScroll()
-                    Spacer(modifier = Modifier.height(20.dp))
-                    // New arrivals Section
-                    Text(
-                        text = currentTranslation["newArrivals"]!!,
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor,
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    NewArrivalScroll()
+                    item {
+                        Text(
+                            text = currentTranslation["popRes"]!!,
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = textColor,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        )
+                        RestaurantScroll()
+                    }
 
+                    // New Arrivals Section
+                    item {
+                        Text(
+                            text = currentTranslation["newArrivals"]!!,
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = textColor,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        )
+                        NewArrivalScroll()
+                    }
+
+                    // Food List Section
+                    item {
+                        Text(
+                            text = currentTranslation["foodMenu"] ?: "Food Menu",
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = textColor,
+                            modifier = Modifier.padding(bottom = 16.dp)
+                        )
+                    }
+                    itemsIndexed(foodList) { index, food ->
+                        FoodCard(navController = navController, food = food, isDarkMode = isDarkMode, textColor = textColor)
+                    }
                 }
             }
         }
@@ -860,7 +863,7 @@ fun Footer(navController: NavController) {
             FooterItem(
                 icon = Icons.Default.Person,
                 label = "Account",
-                onClick = { /* Handle Account click */ }
+                onClick = {navController.navigate("ProfileScreen")}
             )
         }
     }
@@ -891,5 +894,101 @@ fun FooterItem(icon: Any, label: String, onClick: () -> Unit) {
             fontSize = 12.sp,
             color = Color.Black // Customize text color
         )
+    }
+}
+
+
+data class Food(
+    val imageRes: Int, // Image resource ID
+    val name: String, // Name of the food
+    val price: String, // Price of the food
+    val description: String // Optional description
+)
+
+val foodList: List<Food> = listOf(
+    Food(R.drawable.pizzafood, "Hawaiian Pizza", "$12.75", "Pizza with ham and pineapple"),
+    Food(R.drawable.burgerfood, "Cheeseburger", "$8.50", "Classic beef cheeseburger"),
+    Food(R.drawable.sushifood, "Sushi Platter", "$15.00", "Assorted sushi rolls"),
+    Food(R.drawable.steakhousefood, "Tomahawk Steak", "$10.25", "Juicy grilled steak"),
+    Food(R.drawable.pizzafood, "Hawaiian Pizza", "$12.75", "Pizza with ham and pineapple"),
+    Food(R.drawable.burgerfood, "Cheeseburger", "$8.50", "Classic beef cheeseburger"),
+    Food(R.drawable.sushifood, "Sushi Platter", "$15.00", "Assorted sushi rolls"),
+    Food(R.drawable.steakhousefood, "Tomahawk Steak", "$10.25", "Juicy grilled steak"),
+    Food(R.drawable.pizzafood, "Hawaiian Pizza", "$12.75", "Pizza with ham and pineapple"),
+    Food(R.drawable.burgerfood, "Cheeseburger", "$8.50", "Classic beef cheeseburger"),
+    Food(R.drawable.sushifood, "Sushi Platter", "$15.00", "Assorted sushi rolls"),
+    Food(R.drawable.steakhousefood, "Tomahawk Steak", "$10.25", "Juicy grilled steak")
+)
+
+@Composable
+fun FoodList(
+    navController: NavController,
+    isDarkMode: Boolean,
+    textColor: Color,
+    translation: Map<String, String>
+) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        item {
+            Text(
+                text = translation["foodMenu"] ?: "Food Menu",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = textColor,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        }
+        itemsIndexed(foodList) { index, food ->
+            FoodCard(navController = navController, food = food, isDarkMode = isDarkMode, textColor = textColor)
+        }
+    }
+}
+
+@Composable
+fun FoodCard(navController: NavController, food: Food, isDarkMode: Boolean, textColor: Color) {
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable {
+            },
+        shape = RoundedCornerShape(10.dp),
+        color = if (isDarkMode) Color(0xFF1E1E1E) else Color.White
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = food.imageRes),
+                contentDescription = food.name,
+                modifier = Modifier
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Column {
+                Text(
+                    text = food.name,
+                    color = textColor,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
+                Text(
+                    text = food.price,
+                    fontSize = 16.sp,
+                    color = Color(0xFF4CAF50)
+                )
+                Text(
+                    text = food.description,
+                    fontSize = 14.sp,
+                    color = if (isDarkMode) Color.LightGray else Color.Gray
+                )
+            }
+        }
     }
 }

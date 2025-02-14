@@ -1,4 +1,6 @@
-import android.R.attr.contentDescription
+
+package com.hakudesu.finalcloneapp.screen
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

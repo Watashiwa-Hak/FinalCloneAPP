@@ -1,0 +1,431 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/aeon.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/aeon.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/aeon.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/apple.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/apple.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/apple.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/banner.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/banner.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/banner.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/banner1.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/banner1.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/banner1.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/banner3.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/banner3.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/banner3.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/bigc.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/bigc.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/bigc.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/bk.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/bk.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/bk.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/boncafe.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/boncafe.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/boncafe.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/burgerfood.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/burgerfood.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/burgerfood.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/cake.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/cake.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/cake.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/chatimelogo.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/chatimelogo.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/chatimelogo.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/chipmong.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/chipmong.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/chipmong.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/dairyqueenlogo.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/dairyqueenlogo.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/dairyqueenlogo.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/dessert.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/dessert.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/dessert.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/dominologo.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/dominologo.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/dominologo.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/drink.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/drink.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/drink.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/facebook.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/facebook.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/facebook.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/fruit.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/fruit.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/fruit.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/google.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/google.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/google.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/gtv.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/gtv.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/gtv.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/guadian.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/guadian.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/guadian.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/hamburger.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/hamburger.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/hamburger.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/logo.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/logo.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/logo.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/lucky.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/lucky.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/lucky.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/map.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/map.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/map.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/miniso.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/miniso.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/miniso.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/pastacornerfood.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/pastacornerfood.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/pastacornerfood.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/pastacornerres.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/pastacornerres.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/pastacornerres.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/pizza.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/pizza.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/pizza.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/pizzacompany.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/pizzacompany.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/pizzacompany.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/pizzafood.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/pizzafood.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/pizzafood.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/pizzalogo.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/pizzalogo.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/pizzalogo.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/starbucklogo.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/starbucklogo.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/starbucklogo.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/steakhousefood.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/steakhousefood.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/steakhousefood.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/streakhouseres.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/streakhouseres.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/streakhouseres.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/sushi.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/sushi.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/sushi.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/sushifood.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/sushifood.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/sushifood.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/sushires.jpg</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/sushires.jpg" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/sushires.jpg&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/drawable/texaslogo.png</file>
+  <line>1</line>
+  <module>FinalCloneAPP.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/drawable/texaslogo.png" />
+  <problem_class id="AndroidLintIconLocation" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Image defined in density-independent drawable folder</problem_class>
+  <hints />
+  <description>&lt;html&gt;Found bitmap drawable &lt;code&gt;res/drawable/texaslogo.png&lt;/code&gt; in densityless folder&lt;/html&gt;</description>
+  <highlighted_element />
+  <language />
+</problem>
+</problems>

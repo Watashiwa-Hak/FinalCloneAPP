@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>FinalCloneAPP.app.androidTest</file>
+  <module>FinalCloneAPP.app.androidTest</module>
+  <entry_point TYPE="module" FQNAME="FinalCloneAPP.app.androidTest" />
+  <problem_class id="UnnecessaryModuleDependencyInspection" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unnecessary module dependency</problem_class>
+  <hints>
+    <hint value="FinalCloneAPP.app.main" />
+  </hints>
+  <description>Module 'FinalCloneAPP.app.androidTest' sources do not depend on module 'FinalCloneAPP.app.main' sources</description>
+  <highlighted_element />
+  <language />
+</problem>
+<problem>
+  <file>FinalCloneAPP.app.unitTest</file>
+  <module>FinalCloneAPP.app.unitTest</module>
+  <entry_point TYPE="module" FQNAME="FinalCloneAPP.app.unitTest" />
+  <problem_class id="UnnecessaryModuleDependencyInspection" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unnecessary module dependency</problem_class>
+  <hints>
+    <hint value="FinalCloneAPP.app.main" />
+  </hints>
+  <description>Module 'FinalCloneAPP.app.unitTest' sources do not depend on module 'FinalCloneAPP.app.main' sources</description>
+  <highlighted_element />
+  <language />
+</problem>
+</problems>
