@@ -1,5 +1,6 @@
 package com.hakudesu.finalcloneapp.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Preview(showBackground = true)
 @Composable
@@ -33,7 +35,7 @@ fun PasswordScreen(navController: NavController) {
     var passwordError = remember { mutableStateOf("") }
     var confirmPasswordError = remember { mutableStateOf("") }
     val minPasswordLength = 4
-
+    val systemUiController = rememberSystemUiController()
     val translations = mapOf(
         "en" to mapOf(
             "signUp" to "Sign Up",
@@ -60,7 +62,12 @@ fun PasswordScreen(navController: NavController) {
     )
 
     val currentTranslation = translations[selectedLanguage]!!
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode
+        )
+    }
     MaterialTheme(
         colorScheme = if (isDarkMode) MaterialTheme.colorScheme.copy(
             background = Color(0xFF121212),
@@ -88,34 +95,35 @@ fun PasswordScreen(navController: NavController) {
                     contentAlignment = Alignment.Center
                 ) {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .border(2.dp, color = Color(0xFFC04923), RoundedCornerShape(50.dp))
-                            .padding(horizontal = 28.dp, vertical = 5.dp)
-                    ) {
-                        Button(
-                            onClick = { isDarkMode = !isDarkMode },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF8563)),
-                            shape = RoundedCornerShape(20.dp),
-                            modifier = Modifier.size(width = 80.dp, height = 32.dp)
+                            .fillMaxWidth()
+                            .padding(top = 8.dp),
+                        horizontalArrangement = Arrangement.End,
+                        verticalAlignment = Alignment.CenterVertically,
+
                         ) {
-                            Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
+                        // Dark Mode Button (Sun/Moon)
+                        androidx.compose.material3.IconButton(onClick = {
+                            isDarkMode = !isDarkMode
+                        }) {
+                            Text(
+                                text = if (isDarkMode) "☀️" else "🌙",
+                                fontSize = 14.sp,
+                                color = Color.White
+                            )
                         }
 
-                        Button(
-                            onClick = {
-                                selectedLanguage = if (selectedLanguage == "en") "kh" else "en"
-                            },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8C5EDE)),
-
-                            shape = RoundedCornerShape(20.dp),
-                            modifier = Modifier.size(width = 80.dp, height = 32.dp)
+                        // Language Change Button (EN/KH)
+                        androidx.compose.material3.IconButton(
+                            onClick = {selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                            modifier = Modifier
+                                .size(40.dp)
+                                .background(Color(0xFFFFFFF), shape = RoundedCornerShape(20.dp))
                         ) {
                             Text(
                                 text = if (selectedLanguage == "en") "KH" else "EN",
                                 fontSize = 14.sp,
-                                color = MaterialTheme.colorScheme.onSecondary
+                                color = Color(0xFFB6720A)
                             )
                         }
                     }

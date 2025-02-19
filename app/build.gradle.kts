@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
 
     implementation ("com.google.android.libraries.places:places:3.3.0")
     implementation ("com.google.maps.android:maps-compose:2.13.1")
