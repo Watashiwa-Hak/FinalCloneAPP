@@ -1,16 +1,11 @@
 package com.hakudesu.finalcloneapp.screen
 
-import android.R.attr.textColor
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -30,10 +24,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import coil.compose.AsyncImagePainter.State.Empty.painter
 import coil.compose.rememberImagePainter
 import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.hakudesu.finalcloneapp.R
 import kotlinx.coroutines.launch
@@ -48,20 +40,26 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewHomeScreen() {
     HomeScreen(navController = rememberNavController())
 }
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController) {
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
     val textColor = if (isDarkMode) Color.White else Color.Black
+    val bgColor = if (isDarkMode) Color.Black else Color.White
+    val systemUiController = rememberSystemUiController()
     var searchText by remember { mutableStateOf("") }
+
 
     val translations = mapOf(
         "en" to mapOf(
@@ -93,61 +91,52 @@ fun HomeScreen(navController: NavController) {
     )
 
     val currentTranslation = translations[selectedLanguage]!!
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode
+        )
+    }
     Scaffold(
-        topBar = {Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 30.dp)
-                .background(color = Color(0xFFFFFFFF)),
+        topBar = {
+            androidx.compose.material3.TopAppBar(
+                title = {},
+                actions = {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(top = 8.dp),
 
-            contentAlignment = Alignment.Center
-        ) {
-            Spacer(modifier = Modifier.height(30.dp))
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .border(2.dp, color = Color(0xFFFF5722), RoundedCornerShape(50.dp))
-                    .padding(horizontal = 28.dp, vertical = 5.dp)
-            ) {
+                    ) {
+                    //Dark Mode /Light Mode
+                        androidx.compose.material3.IconButton(onClick = {
+                            isDarkMode = !isDarkMode
+                        }) {
+                            Text(
+                                text = if (isDarkMode) "☀️" else "🌙",
+                                fontSize = 14.sp,
+                                color = Color.White
+                            )
+                        }
 
-                Button(
-                    onClick = { isDarkMode = !isDarkMode },
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color(
-                            0xFFFF8563
-                        )
-                    ),
-                    shape = RoundedCornerShape(20.dp),
-                    modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                ) {
-                    Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
-                }
-
-                Button(
-                    onClick = {
-                        selectedLanguage = if (selectedLanguage == "en") "kh" else "en"
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color(
-                            0xFF8C5EDE
-                        )
-                    ),
-                    shape = RoundedCornerShape(20.dp),
-                    modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                ) {
-                    Text(
-                        text = if (selectedLanguage == "en") "KH" else "EN",
-                        fontSize = 14.sp,
-                        color = Color(
-                            0xFFFFFFFF
-                        )
-                    )
-
-                }
-            }
-        }},
+                        // Language Change Button (EN/KH)
+                        androidx.compose.material3.IconButton(
+                            onClick = {selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                            modifier = Modifier
+                                .size(40.dp)
+                                .background(Color(0xFFFFFFF), shape = RoundedCornerShape(20.dp))
+                        ) {
+                            Text(
+                                text = if (selectedLanguage == "en") "KH" else "EN",
+                                fontSize = 14.sp,
+                                color = Color(0xFFE88E08)
+                            )
+                        }
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = bgColor)
+            )
+        },
         bottomBar = { Footer(navController) }
     ) { paddingValues ->
         MaterialTheme(

@@ -26,16 +26,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.hakudesu.finalcloneapp.R
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FoodDetailsScreen(navController: NavController) {
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
     val textColor = if (isDarkMode) Color.White else Color.Black
     val bgColor = if (isDarkMode) Color(0xFF121212) else Color(0xFFF8F8F8)
-
+    val systemUiController = rememberSystemUiController()
     val translations = mapOf(
         "en" to mapOf(
             "FoodDetails" to "Food Details",
@@ -52,50 +54,60 @@ fun FoodDetailsScreen(navController: NavController) {
     )
 
     val currentTranslation = translations[selectedLanguage]!!
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode
+        )
+    }
     Scaffold(
         topBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp)
-                    .background(color = bgColor),
-                contentAlignment = Alignment.Center
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .border(2.dp, color = Color(0xFFFF5722), RoundedCornerShape(50.dp))
-                        .padding(horizontal = 28.dp, vertical = 5.dp)
-                ) {
-                    Button(
-                        onClick = { isDarkMode = !isDarkMode },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFFFF8563)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
-                    }
-
-                    Button(
-                        onClick = { selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF8C5EDE)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(
-                            text = if (selectedLanguage == "en") "KH" else "EN",
-                            fontSize = 14.sp,
-                            color = Color.White
+            androidx.compose.material3.TopAppBar(
+                title = {},
+                navigationIcon = {
+                    androidx.compose.material3.IconButton(onClick = { navController.popBackStack() }) {
+                        androidx.compose.material3.Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Back",
+                            tint = textColor
                         )
                     }
-                }
-            }
+                },
+                actions = {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(top = 8.dp),
+
+                        ) {
+                        //Dark Mode /Light Mode
+                        androidx.compose.material3.IconButton(onClick = {
+                            isDarkMode = !isDarkMode
+                        }) {
+                            Text(
+                                text = if (isDarkMode) "☀️" else "🌙",
+                                fontSize = 14.sp,
+                                color = Color.White
+                            )
+                        }
+
+                        // Language Change Button (EN/KH)
+                        androidx.compose.material3.IconButton(
+                            onClick = {selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                            modifier = Modifier
+                                .size(40.dp)
+                                .background(Color(0xFFFFFFF), shape = RoundedCornerShape(20.dp))
+                        ) {
+                            Text(
+                                text = if (selectedLanguage == "en") "KH" else "EN",
+                                fontSize = 14.sp,
+                                color = Color(0xFFE88E08)
+                            )
+                        }
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = bgColor)
+            )
         },
         bottomBar = { Footer(navController) }
 
@@ -108,17 +120,17 @@ fun FoodDetailsScreen(navController: NavController) {
 
         ) {
             // Back button
-            Spacer(modifier = Modifier.height(10.dp))
-            Icon(
-                imageVector = Icons.Filled.ArrowBack,
-                contentDescription = "Back",
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-                    .clickable { navController.popBackStack() }
-                    .width(40.dp)
-                    .height(35.dp),
-                tint = textColor
-            )
+//            Spacer(modifier = Modifier.height(10.dp))
+//            Icon(
+//                imageVector = Icons.Filled.ArrowBack,
+//                contentDescription = "Back",
+//                modifier = Modifier
+//                    .padding(bottom = 8.dp)
+//                    .clickable { navController.popBackStack() }
+//                    .width(40.dp)
+//                    .height(35.dp),
+//                tint = textColor
+//            )
             Spacer(modifier = Modifier.height(10.dp))
 
             // Title

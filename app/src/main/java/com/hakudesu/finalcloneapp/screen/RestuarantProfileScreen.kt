@@ -8,11 +8,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,7 +35,9 @@ import com.hakudesu.finalcloneapp.models.MenuItemData
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RestaurantProfileScreen(
     navController: NavController,
@@ -45,7 +51,7 @@ fun RestaurantProfileScreen(
     var selectedLanguage by remember { mutableStateOf("en") }
     val textColor = if (isDarkMode) Color.White else Color.Black
     val bgColor = if (isDarkMode) Color(0xFF121212) else Color(0xFFF4F4F4) // Dark Mode Background
-
+    val systemUiController = rememberSystemUiController()
     val translations = mapOf(
         "en" to mapOf(
             "Cuisine" to "Cuisine",
@@ -66,50 +72,60 @@ fun RestaurantProfileScreen(
     )
 
     val currentTranslation = translations[selectedLanguage]!!
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode
+        )
+    }
     Scaffold(
         topBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp)
-                    .background(color = bgColor), // Dark mode applied
-                contentAlignment = Alignment.Center
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .border(2.dp, color = Color(0xFFFF5722), RoundedCornerShape(50.dp))
-                        .padding(horizontal = 28.dp, vertical = 5.dp)
-                ) {
-                    Button(
-                        onClick = { isDarkMode = !isDarkMode },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFFFF8563)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
-                    }
-
-                    Button(
-                        onClick = { selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF8C5EDE)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(
-                            text = if (selectedLanguage == "en") "KH" else "EN",
-                            fontSize = 14.sp,
-                            color = Color.White
+            androidx.compose.material3.TopAppBar(
+                title = {},
+                navigationIcon = {
+                    androidx.compose.material3.IconButton(onClick = { navController.popBackStack() }) {
+                        androidx.compose.material3.Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Back",
+                            tint = textColor
                         )
                     }
-                }
-            }
+                },
+                actions = {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(top = 8.dp),
+
+                        ) {
+                        // Dark Mode Button (Sun/Moon)
+                        androidx.compose.material3.IconButton(onClick = {
+                            isDarkMode = !isDarkMode
+                        }) {
+                            Text(
+                                text = if (isDarkMode) "☀️" else "🌙",
+                                fontSize = 14.sp,
+                                color = Color.White
+                            )
+                        }
+
+                        // Language Change Button (EN/KH)
+                        androidx.compose.material3.IconButton(
+                            onClick = {selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                            modifier = Modifier
+                                .size(40.dp)
+                                .background(Color(0xFFFFFFF), shape = RoundedCornerShape(20.dp))
+                        ) {
+                            Text(
+                                text = if (selectedLanguage == "en") "KH" else "EN",
+                                fontSize = 14.sp,
+                                color = Color(0xFFE88E08)
+                            )
+                        }
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = bgColor)
+            )
         },
         bottomBar = { Footer(navController) }
     ) { paddingValues ->

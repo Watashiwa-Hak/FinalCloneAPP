@@ -27,13 +27,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.*
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+
 @Composable
 fun ProfileScreen(navController: NavController) {
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
     val textColor = if (isDarkMode) Color.White else Color.Black
+    val numColor = Color.Black
     val bgColor = if (isDarkMode) Color(0xFF121212) else Color(0xFFF4F4F4) // Dark Mode Background
-
+    val systemUiController = rememberSystemUiController()
     val translations = mapOf(
         "en" to mapOf(
             "Profile" to "Profile",
@@ -68,51 +71,14 @@ fun ProfileScreen(navController: NavController) {
     )
 
     val currentTranslation = translations[selectedLanguage]!!
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode
+        )
+    }
     Scaffold(
-        topBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp)
-                    .background(color = bgColor), // Dark mode applied
-                contentAlignment = Alignment.Center
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .border(2.dp, color = Color(0xFFFF5722), RoundedCornerShape(50.dp))
-                        .padding(horizontal = 28.dp, vertical = 5.dp)
-                ) {
-                    Button(
-                        onClick = { isDarkMode = !isDarkMode },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFFFF8563)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
-                    }
 
-                    Button(
-                        onClick = { selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF8C5EDE)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(
-                            text = if (selectedLanguage == "en") "KH" else "EN",
-                            fontSize = 14.sp,
-                            color = Color.White
-                        )
-                    }
-                }
-            }
-        },
                 bottomBar = { Footer(navController) }
     ) { paddingValues ->
 
@@ -123,7 +89,6 @@ fun ProfileScreen(navController: NavController) {
                 .padding(paddingValues)
         ) {
             // Header Section
-            Spacer(modifier = Modifier.height(20.dp))
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -138,6 +103,39 @@ fun ProfileScreen(navController: NavController) {
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier.fillMaxWidth()
                         ) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(top = 8.dp),
+                                horizontalArrangement = Arrangement.End,
+                                verticalAlignment = Alignment.CenterVertically,
+
+                                ) {
+                                // Dark Mode Button (Sun/Moon)
+                                androidx.compose.material3.IconButton(onClick = {
+                                    isDarkMode = !isDarkMode
+                                }) {
+                                    Text(
+                                        text = if (isDarkMode) "☀️" else "🌙",
+                                        fontSize = 14.sp,
+                                        color = Color.White
+                                    )
+                                }
+
+                                // Language Change Button (EN/KH)
+                                androidx.compose.material3.IconButton(
+                                    onClick = {selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                                    modifier = Modifier
+                                        .size(40.dp)
+                                        .background(Color(0xFFFFFFF), shape = RoundedCornerShape(20.dp))
+                                ) {
+                                    Text(
+                                        text = if (selectedLanguage == "en") "KH" else "EN",
+                                        fontSize = 14.sp,
+                                        color = Color.White
+                                    )
+                                }
+                            }
                             Image(
                                 painter = painterResource(id = R.drawable.logo), // Replace `logo` with your image name
                                 contentDescription = "Logo",
@@ -166,10 +164,10 @@ fun ProfileScreen(navController: NavController) {
                                     .padding(15.dp),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                StatItem(count = "2", label = currentTranslation["Posts"]!!, textColor = textColor)
-                                StatItem(count = "6", label = currentTranslation["Orders"]!!, textColor = textColor)
-                                StatItem(count = "5", label = currentTranslation["WishList"]!!, textColor = textColor)
-                                StatItem(count = "248", label = currentTranslation["Likes"]!!, textColor = textColor)
+                                StatItem(count = "2", label = currentTranslation["Posts"]!!, textColor = numColor)
+                                StatItem(count = "6", label = currentTranslation["Orders"]!!, textColor = numColor)
+                                StatItem(count = "5", label = currentTranslation["WishList"]!!, textColor = numColor)
+                                StatItem(count = "248", label = currentTranslation["Likes"]!!, textColor = numColor)
                             }
                         }
                     }

@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.hakudesu.finalcloneapp.viewmodels.CartViewModel
 import com.hakudesu.finalcloneapp.R
 import com.hakudesu.finalcloneapp.models.CartItem
@@ -38,22 +39,23 @@ fun CartScreenPreview() {
     val fakeNavController = rememberNavController() // Safe for previews
     CartScreen(navController = fakeNavController)
 }
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CartScreen(navController: NavController, viewModel: CartViewModel = viewModel()) {
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
     val textColor = if (isDarkMode) Color.White else Color.Black
     val bgColor = if (isDarkMode) Color(0xFF121212) else Color(0xFFFFFFFF) // Dark Mode Background
-
+    val systemUiController = rememberSystemUiController()
     val translations = mapOf(
         "en" to mapOf(
-            "Cart" to "Cart",
+            "Cart" to "My Cart",
             "Price" to "Price",
             "Checkout" to "Checkout",
             "Back" to "Back"
         ),
         "kh" to mapOf(
-            "Cart" to "រទេះ",
+            "Cart" to "កន្ត្រករបស់ខ្ញុំ",
             "Price" to "តម្លៃ",
             "Checkout" to "ពិនិត្យចេញ",
             "Back" to "ត្រឡប់ក្រោយ"
@@ -61,50 +63,60 @@ fun CartScreen(navController: NavController, viewModel: CartViewModel = viewMode
     )
 
     val currentTranslation = translations[selectedLanguage]!!
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode
+        )
+    }
     Scaffold(
         topBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp)
-                    .background(color = bgColor), // Dark mode applied
-                contentAlignment = Alignment.Center
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .border(2.dp, color = Color(0xFFFF5722), RoundedCornerShape(50.dp))
-                        .padding(horizontal = 28.dp, vertical = 5.dp)
-                ) {
-                    Button(
-                        onClick = { isDarkMode = !isDarkMode },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFFFF8563)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
-                    }
-
-                    Button(
-                        onClick = { selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF8C5EDE)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(
-                            text = if (selectedLanguage == "en") "KH" else "EN",
-                            fontSize = 14.sp,
-                            color = Color.White
+            androidx.compose.material3.TopAppBar(
+                title = {},
+                navigationIcon = {
+                    androidx.compose.material3.IconButton(onClick = { navController.popBackStack() }) {
+                        androidx.compose.material3.Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Back",
+                            tint = textColor
                         )
                     }
-                }
-            }
+                },
+                actions = {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(top = 8.dp),
+
+                        ) {
+                        // Dark Mode Button (Sun/Moon)
+                        androidx.compose.material3.IconButton(onClick = {
+                            isDarkMode = !isDarkMode
+                        }) {
+                            Text(
+                                text = if (isDarkMode) "☀️" else "🌙",
+                                fontSize = 14.sp,
+                                color = Color.White
+                            )
+                        }
+
+                        // Language Change Button (EN/KH)
+                        androidx.compose.material3.IconButton(
+                            onClick = {selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                            modifier = Modifier
+                                .size(40.dp)
+                                .background(Color(0xFFFFFFF), shape = RoundedCornerShape(20.dp))
+                        ) {
+                            Text(
+                                text = if (selectedLanguage == "en") "KH" else "EN",
+                                fontSize = 14.sp,
+                                color = Color(0xFFE88E08)
+                            )
+                        }
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = bgColor)
+            )
         },
         bottomBar = { Footer(navController) } // Footer will always stick at the bottom
     ) { paddingValues ->
@@ -118,18 +130,18 @@ fun CartScreen(navController: NavController, viewModel: CartViewModel = viewMode
             val cartItems by viewModel.cartItems.collectAsState()
             val totalPrice by viewModel.totalPrice.collectAsState()
 
-            Spacer(modifier = Modifier.height(20.dp))
+//
             // Header
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = { navController.popBackStack() }) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = currentTranslation["Back"]
-                    )
-                }
+//                IconButton(onClick = { navController.popBackStack() }) {
+//                    Icon(
+//                        imageVector = Icons.Filled.ArrowBack,
+//                        contentDescription = currentTranslation["Back"]
+//                    )
+//                }
                 Text(
                     text = currentTranslation["Cart"]!!,
                     fontSize = 24.sp,
@@ -139,7 +151,7 @@ fun CartScreen(navController: NavController, viewModel: CartViewModel = viewMode
                 )
             }
             Spacer(modifier = Modifier.width(10.dp))
-
+            Spacer(modifier = Modifier.height(20.dp))
             // Cart Items List
             LazyColumn(
                 modifier = Modifier.weight(1f)

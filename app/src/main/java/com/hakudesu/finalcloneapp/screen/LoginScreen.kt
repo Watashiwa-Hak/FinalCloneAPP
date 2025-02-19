@@ -41,6 +41,8 @@ import androidx.navigation.compose.rememberNavController
 import com.hakudesu.finalcloneapp.R
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.SideEffect
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Preview(showBackground = true)
@@ -57,7 +59,7 @@ fun LoginScreen(navController: NavController) {
     var password by remember { mutableStateOf("") }
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
-
+    val systemUiController = rememberSystemUiController()
     // State variables for validation errors
     var emailOrUsernameError by remember { mutableStateOf(false) }
     var passwordError by remember { mutableStateOf(false) }
@@ -91,7 +93,12 @@ fun LoginScreen(navController: NavController) {
 
     // Apply the custom color scheme based on the dark mode state
     val customColorScheme = if (isDarkMode) darkColorScheme() else lightColorScheme()
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode
+        )
+    }
     MaterialTheme(
         colorScheme = customColorScheme
     ) {
@@ -114,32 +121,39 @@ fun LoginScreen(navController: NavController) {
                     contentAlignment = Alignment.Center
                 ) {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .border(2.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(50.dp))
-                            .padding(horizontal = 28.dp, vertical = 5.dp)
+                            .fillMaxWidth()
+                            .padding(top = 8.dp),
+                        horizontalArrangement = Arrangement.End,
+                        verticalAlignment = Alignment.CenterVertically,
+
                     ) {
-                        Button(
-                            onClick = { isDarkMode = !isDarkMode },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF8563)),
-                            shape = RoundedCornerShape(20.dp),
-                            modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                        ) {
-                            Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
+                        // Dark Mode Button (Sun/Moon)
+                        androidx.compose.material3.IconButton(onClick = {
+                            isDarkMode = !isDarkMode
+                        }) {
+                            Text(
+                                text = if (isDarkMode) "☀️" else "🌙",
+                                fontSize = 14.sp,
+                                color = Color.White
+                            )
                         }
 
-                        Button(
-                            onClick = { selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8C5EDE)),
-                            shape = RoundedCornerShape(20.dp),
-                            modifier = Modifier.size(width = 80.dp, height = 32.dp)
+                        // Language Change Button (EN/KH)
+                        androidx.compose.material3.IconButton(
+                            onClick = {selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                            modifier = Modifier
+                                .size(40.dp)
+                                .background(Color(0xFFFFFFF), shape = RoundedCornerShape(20.dp))
                         ) {
-                            Text(text = if (selectedLanguage == "en") "KH" else "EN", fontSize = 14.sp, color = MaterialTheme.colorScheme.onSecondary)
+                            Text(
+                                text = if (selectedLanguage == "en") "KH" else "EN",
+                                fontSize = 14.sp,
+                                color = Color(0xFFB6720A)
+                            )
                         }
-                    }
-                }
-                Spacer(modifier = Modifier.height(100.dp))
+                    }                }
+                Spacer(modifier = Modifier.height(20.dp))
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Blossom Logo",
@@ -166,7 +180,7 @@ fun LoginScreen(navController: NavController) {
                     value = emailOrUsername,
                     onValueChange = {
                         emailOrUsername = it
-                        emailOrUsernameError = it.text.isEmpty() // Validate on change
+                        emailOrUsernameError = it.text.isEmpty()
                     },
                     label = {
                         Text(
@@ -200,7 +214,7 @@ fun LoginScreen(navController: NavController) {
                     value = password,
                     onValueChange = {
                         password = it
-                        passwordError = it.isEmpty() // Validate on change
+                        passwordError = it.isEmpty()
                     },
                     label = {
                         Text(
