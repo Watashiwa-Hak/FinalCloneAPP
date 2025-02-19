@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.hakudesu.finalcloneapp.R
 
 @Preview(showBackground = true)
@@ -34,10 +37,12 @@ fun SearchScreenR() {
 fun SearchScreen(navController: NavController) {
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
-    val textColor = if (isDarkMode) Color.White else Color.Black
+    val textColor =  Color.Black
+    val arrowColor = if (isDarkMode) Color.White else Color.Black
     val backgroundColor = if (isDarkMode) Color(0xFF121212) else Color(0xFFF8F8F8)
+    val bgColor = if (isDarkMode) Color(0xFF121212) else Color(0xFFF8F8F8)
     var searchText by remember { mutableStateOf("") }
-
+    val systemUiController = rememberSystemUiController()
     // Translation map
     val translations = mapOf(
         "en" to mapOf(
@@ -63,52 +68,60 @@ fun SearchScreen(navController: NavController) {
     )
 
     val currentTranslation = translations[selectedLanguage]!!
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode
+        )
+    }
     Scaffold(
         topBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp)
-                    .background(color = backgroundColor),
-                contentAlignment = Alignment.Center
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .border(2.dp, color = Color(0xFFFF5722), RoundedCornerShape(50.dp))
-                        .padding(horizontal = 28.dp, vertical = 5.dp)
-                ) {
-                    Button(
-                        onClick = { isDarkMode = !isDarkMode },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFFFF8563)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(text = if (isDarkMode) "☀️" else "🌙", fontSize = 14.sp)
-                    }
-
-                    Button(
-                        onClick = {
-                            selectedLanguage = if (selectedLanguage == "en") "kh" else "en"
-                        },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF8C5EDE)
-                        ),
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.size(width = 80.dp, height = 32.dp)
-                    ) {
-                        Text(
-                            text = if (selectedLanguage == "en") "KH" else "EN",
-                            fontSize = 14.sp,
-                            color = Color.White
+            androidx.compose.material3.TopAppBar(
+                title = {},
+                navigationIcon = {
+                    androidx.compose.material3.IconButton(onClick = { navController.popBackStack() }) {
+                        androidx.compose.material3.Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Back",
+                            tint = arrowColor
                         )
                     }
-                }
-            }
+                },
+                actions = {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(top = 8.dp),
+
+                        ) {
+                        //Dark Mode /Light Mode
+                        androidx.compose.material3.IconButton(onClick = {
+                            isDarkMode = !isDarkMode
+                        }) {
+                            Text(
+                                text = if (isDarkMode) "☀️" else "🌙",
+                                fontSize = 14.sp,
+                                color = Color.White
+                            )
+                        }
+
+                        // Language Change Button (EN/KH)
+                        androidx.compose.material3.IconButton(
+                            onClick = {selectedLanguage = if (selectedLanguage == "en") "kh" else "en" },
+                            modifier = Modifier
+                                .size(40.dp)
+                                .background(Color(0xFFFFFFF), shape = RoundedCornerShape(20.dp))
+                        ) {
+                            Text(
+                                text = if (selectedLanguage == "en") "KH" else "EN",
+                                fontSize = 14.sp,
+                                color = Color(0xFFE88E08)
+                            )
+                        }
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = bgColor)
+            )
         },
         bottomBar = { Footer(navController) },
         modifier = Modifier.background(backgroundColor)
@@ -133,7 +146,7 @@ fun SearchScreen(navController: NavController) {
                     onValueChange = { searchText = it },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
+//                        .padding(8.dp)
                         .background(Color(0xFFE7E7E7), RoundedCornerShape(10.dp))
                         .padding(horizontal = 16.dp, vertical = 12.dp),
                     textStyle = LocalTextStyle.current.copy(color = textColor),
@@ -150,7 +163,7 @@ fun SearchScreen(navController: NavController) {
 
                 // Search Tags
                 LazyRow(
-                    modifier = Modifier.padding(vertical = 8.dp),
+                    modifier = Modifier.padding(vertical = 24.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(listOf("khmerTag", "coffeeTag", "snackTag", "asianTag")) { tag ->
@@ -170,7 +183,7 @@ fun SearchScreen(navController: NavController) {
 
                 // Food Recommendations
                 Column(
-                    modifier = Modifier.padding(vertical = 8.dp)
+//                    modifier = Modifier.padding(vertical = 4.dp)
                 ) {
                     FoodItem(
                         imageRes = R.drawable.food1, // Replace with actual image resource

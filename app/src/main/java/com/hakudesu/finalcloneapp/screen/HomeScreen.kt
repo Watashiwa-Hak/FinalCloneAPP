@@ -186,13 +186,14 @@ fun HomeScreen(navController: NavController) {
                                 )
                             }
                         }
+                        Spacer(modifier = Modifier.height(20.dp))
                     }
 
                     item { // Search Box
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 20.dp)
+                                .padding(horizontal = 9.dp)
                                 .clip(RoundedCornerShape(50.dp))
                                 .background(Color.White)
                                 .border(1.dp, Color.LightGray, RoundedCornerShape(50.dp)) // Fake text box border
@@ -207,7 +208,7 @@ fun HomeScreen(navController: NavController) {
                                     imageVector = Icons.Default.Search, // Search icon
                                     contentDescription = "Search",
                                     tint = Color.Gray,
-                                    modifier = Modifier.size(20.dp)
+                                    modifier = Modifier.size(22.dp)
                                 )
                                 Spacer(modifier = Modifier.width(8.dp)) // Space between icon and text
                                 Text(
@@ -217,12 +218,14 @@ fun HomeScreen(navController: NavController) {
                                     fontWeight = FontWeight.Bold
                                 )
                             }
+
                         }
                     }
 
 
                     // Carousel
                     item {
+                        Spacer(modifier = Modifier.height(16.dp))
                         Carousel()
                     }
 
@@ -246,7 +249,7 @@ fun HomeScreen(navController: NavController) {
                             )
                         }
                     }
-item{Spacer(modifier = Modifier.height(20.dp))}
+                    item{Spacer(modifier = Modifier.height(20.dp))}
                     // Categories Section
                     item {
                         Text(
@@ -409,7 +412,7 @@ fun Carousel() {
             )
         }
 
-        Spacer(modifier = Modifier.height(28.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         // Custom Pagination Indicators
         Row(

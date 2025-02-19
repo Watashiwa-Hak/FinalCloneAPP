@@ -14,6 +14,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.hakudesu.finalcloneapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,13 +38,13 @@ fun AboutScreen(navController: NavController) {
     val isKhmerMode = remember { mutableStateOf(false) } // false = English, true = Khmer
     val textColor = if (isDarkMode.value) Color.White else Color.Black
     val bgColor = if (isDarkMode.value) Color(0xFF121212) else Color(0xFFF8F8F8)
-
+    val systemUiController = rememberSystemUiController()
     // List of team members with their names and image resources
     val teamMembers = listOf(
-        TeamMember("Thai Hak", R.drawable.hak), // Replace with actual image resource
-        TeamMember("Tim ChanChornike", R.drawable.nike), // Replace with actual image resource
-        TeamMember("Pheng LeabHeng", R.drawable.heng), // Replace with actual image resource
-        TeamMember("Teng Seangratanak", R.drawable.nak) // Replace with actual image resource
+        TeamMember("Thai Hak", R.drawable.hak),
+        TeamMember("Tim ChanChornike", R.drawable.nike),
+        TeamMember("Pheng LeabHeng", R.drawable.heng),
+        TeamMember("Teng Seangratanak", R.drawable.nak)
     )
 
     // Randomize positions based on name order
@@ -84,7 +86,12 @@ fun AboutScreen(navController: NavController) {
     } else {
         "Phone: 023 456 789"
     }
-
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = !isDarkMode.value
+        )
+    }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -123,7 +130,7 @@ fun AboutScreen(navController: NavController) {
                             Text(
                                 text = if (isKhmerMode.value) "KH" else "EN",
                                 fontSize = 14.sp,
-                                color = textColor
+                                color = Color(0xFFF57909)
                             )
                         }
                     }
@@ -131,7 +138,7 @@ fun AboutScreen(navController: NavController) {
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = bgColor)
             )
         },
-        bottomBar = { Footer(navController) } // Define or remove Footer composable
+        bottomBar = { Footer(navController) }
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier
@@ -161,12 +168,12 @@ fun AboutScreen(navController: NavController) {
                             "Haku",
                             fontSize = 32.sp,
                             fontWeight = FontWeight.Bold,
-                            color = androidx.compose.material3.MaterialTheme.colorScheme.onBackground
+                            color = Color(0xFFF57909)
                         )
                         Text(
                             if (isKhmerMode.value) "កម្មង់ម្ហូប" else "Food Delivery",
                             fontSize = 18.sp,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = Color(0xFFF57909)
                         )
                     }
                 }
@@ -255,7 +262,7 @@ fun AboutScreen(navController: NavController) {
                     textColor = textColor,
                     bgColor = bgColor
                 )
-                Spacer(modifier = Modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(2.dp))
             }
 
             item {
