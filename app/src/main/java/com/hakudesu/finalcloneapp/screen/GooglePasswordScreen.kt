@@ -75,14 +75,7 @@ fun GooglePasswordScreen(navController: NavController, email: String) {
             )
 
             Spacer(modifier = Modifier.height(50.dp))
-            Image(
-                painter = rememberImagePainter(data = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png"),
-                contentDescription = "Google Logo",
-                modifier = Modifier
-                    .size(152.dp, 60.dp)
-                    .padding(bottom = 16.dp)
-            )
-            Spacer(modifier = Modifier.height(50.dp))
+
             // Email Header
             Text(
                 text = email,

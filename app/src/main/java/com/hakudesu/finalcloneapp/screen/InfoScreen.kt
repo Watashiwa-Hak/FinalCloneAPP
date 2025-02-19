@@ -147,7 +147,7 @@ fun InfoScreen(navController: NavController, totalPrice: Float) {
                 if (tel.value.isEmpty()) {
                     telError.value = currentTranslation["TelephoneError"]!!
                     isValid = false
-                } else if (tel.value.length < 10 || !tel.value.matches(Regex("^[0-9]*$"))) {
+                } else if (tel.value.length < 8 || !tel.value.matches(Regex("^[0-9]*$"))) {
                     telError.value = currentTranslation["InvalidTelephone"]!!
                     isValid = false
                 } else {

@@ -15,6 +15,8 @@ import com.hakudesu.finalcloneapp.screen.LoginScreen
 import com.hakudesu.finalcloneapp.screen.RegisterScreen
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.hakudesu.finalcloneapp.screen.AboutScreen
+import com.hakudesu.finalcloneapp.screen.FoodDetailsScreen
 import com.hakudesu.finalcloneapp.screen.Footer
 import com.hakudesu.finalcloneapp.screen.GooglePasswordScreen
 import com.hakudesu.finalcloneapp.screen.GoogleScreen
@@ -27,6 +29,7 @@ import com.hakudesu.finalcloneapp.screen.PaymentScreen
 import com.hakudesu.finalcloneapp.screen.ProfileScreen
 import com.hakudesu.finalcloneapp.screen.RestaurantProfileScreen
 import com.hakudesu.finalcloneapp.screen.RestaurantScreen
+import com.hakudesu.finalcloneapp.screen.SearchScreen
 import com.hakudesu.finalcloneapp.screen.SplashScreen
 
 class MainActivity : ComponentActivity() {
@@ -57,6 +60,11 @@ fun AppNavigation(navController: NavController) {
         composable("HomeScreen") { HomeScreen(navController) }
         composable("cartScreen") { CartScreen(navController) }
         composable("restaurantScreen") { RestaurantScreen(navController) }
+        composable("FoodDetailsScreen") { FoodDetailsScreen(navController) }
+        composable("SearchScreen") { SearchScreen(navController) }
+        composable("AboutScreen") { AboutScreen(navController) }
+
+
         composable(
             "restaurantProfile/{name}/{rating}/{deliveryTime}/{cuisine}/{imageRes}",
             arguments = listOf(

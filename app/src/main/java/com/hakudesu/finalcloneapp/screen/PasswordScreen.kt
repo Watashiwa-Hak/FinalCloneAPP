@@ -28,13 +28,11 @@ fun PreviewPasswordScreen() {
 fun PasswordScreen(navController: NavController) {
     var isDarkMode by remember { mutableStateOf(false) }
     var selectedLanguage by remember { mutableStateOf("en") }
-    val username = remember { mutableStateOf("") }
-    val phoneNumber = remember { mutableStateOf("") }
     var password = remember { mutableStateOf("") }
     var confirmPassword = remember { mutableStateOf("") }
     var passwordError = remember { mutableStateOf("") }
     var confirmPasswordError = remember { mutableStateOf("") }
-    val minPasswordLength = 6
+    val minPasswordLength = 4
 
     val translations = mapOf(
         "en" to mapOf(

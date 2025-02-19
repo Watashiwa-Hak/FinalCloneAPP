@@ -199,30 +199,38 @@ fun HomeScreen(navController: NavController) {
                         }
                     }
 
-                    // Search Box
-                    item {
-                        OutlinedTextField(
-                            value = searchText,
-                            onValueChange = { searchText = it },
-                            placeholder = {
-                                Text(
-                                    text = currentTranslation["searchBox"] ?: "",
-                                    color = Color.Gray,
-                                )
-                            },
-                            textStyle = TextStyle(
-                                color = Color(0x88000000),
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold
-                            ),
+                    item { // Search Box
+                        Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 20.dp)
                                 .clip(RoundedCornerShape(50.dp))
-                                .border(1.dp, Color.LightGray, RoundedCornerShape(50.dp))
                                 .background(Color.White)
-                        )
+                                .border(1.dp, Color.LightGray, RoundedCornerShape(50.dp)) // Fake text box border
+                                .clickable { navController.navigate("SearchScreen") } // Click anywhere inside
+                                .padding(vertical = 12.dp, horizontal = 16.dp) // Padding for text inside
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Search, // Search icon
+                                    contentDescription = "Search",
+                                    tint = Color.Gray,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp)) // Space between icon and text
+                                Text(
+                                    text = currentTranslation["searchBox"] ?: "",
+                                    color = Color.Gray,
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                        }
                     }
+
 
                     // Carousel
                     item {
@@ -249,7 +257,7 @@ fun HomeScreen(navController: NavController) {
                             )
                         }
                     }
-
+item{Spacer(modifier = Modifier.height(20.dp))}
                     // Categories Section
                     item {
                         Text(
@@ -330,7 +338,7 @@ fun HomeScreen(navController: NavController) {
                             )
                         }
                     }
-
+                    item{Spacer(modifier = Modifier.height(20.dp))}
                     // Popular Restaurants Section
                     item {
                         Text(
@@ -938,7 +946,8 @@ fun FoodList(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = textColor,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 16.dp),
+
             )
         }
         itemsIndexed(foodList) { index, food ->
@@ -953,8 +962,7 @@ fun FoodCard(navController: NavController, food: Food, isDarkMode: Boolean, text
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable {
-            },
+            .clickable { navController.navigate("FoodDetailsScreen") }, // Navigate to the correct route
         shape = RoundedCornerShape(10.dp),
         color = if (isDarkMode) Color(0xFF1E1E1E) else Color.White
     ) {

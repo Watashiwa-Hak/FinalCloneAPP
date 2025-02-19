@@ -40,15 +40,17 @@ fun PaymentMethodScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFF8F8F8))
+
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
+                .padding(top=50.dp)
         ) {
             Text(
                 text = "Payment Method",
-                fontSize = 18.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 color = Color.Black

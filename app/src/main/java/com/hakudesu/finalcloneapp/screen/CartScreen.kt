@@ -113,6 +113,7 @@ fun CartScreen(navController: NavController, viewModel: CartViewModel = viewMode
                 .fillMaxSize()
                 .background(bgColor) // Apply dark mode background
                 .padding(paddingValues)
+                .padding(16.dp)
         ) {
             val cartItems by viewModel.cartItems.collectAsState()
             val totalPrice by viewModel.totalPrice.collectAsState()

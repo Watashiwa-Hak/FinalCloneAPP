@@ -47,7 +47,8 @@ fun ProfileScreen(navController: NavController) {
             "DeliveryAddress" to "Delivery Address",
             "Settings" to "Settings",
             "ContactUs" to "Contact with Us",
-            "AboutUs" to "About Us"
+            "AboutUs" to "About Us",
+            "Logout" to "Log out"
         ),
         "kh" to mapOf(
             "Profile" to "ប្រវត្តិរូប",
@@ -61,7 +62,8 @@ fun ProfileScreen(navController: NavController) {
             "DeliveryAddress" to "អាសយដ្ឋានដឹកជញ្ជូន",
             "Settings" to "ការកំណត់",
             "ContactUs" to "ទំនាក់ទំនងជាមួយយើង",
-            "AboutUs" to "អំពីយើង"
+            "AboutUs" to "អំពីយើង",
+            "Logout" to "ចាកចេញ"
         )
     )
 
@@ -176,10 +178,10 @@ fun ProfileScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(20.dp))
                         MenuSection(
                         items = listOf(
-                            MenuItem(icon = "👤", label = currentTranslation["AccountInfo"]!!, color = Color(0xFFFF8000)),
-                            MenuItem(icon = "🛒", label = currentTranslation["MyOrder"]!!, color = Color(0xFF28A745)),
-                            MenuItem(icon = "💳", label = currentTranslation["PaymentMethod"]!!, color = Color(0xFFFFC107)),
-                            MenuItem(icon = "📍", label = currentTranslation["DeliveryAddress"]!!, color = Color(0xFF6F42C1))
+                            MenuItem(icon = "👤", label = currentTranslation["AccountInfo"]!!, color = Color(0xFFFF8000),onClick = {}),
+                            MenuItem(icon = "🛒", label = currentTranslation["MyOrder"]!!, color = Color(0xFF28A745),onClick = {}),
+                            MenuItem(icon = "💳", label = currentTranslation["PaymentMethod"]!!, color = Color(0xFFFFC107),onClick = {}),
+                            MenuItem(icon = "📍", label = currentTranslation["DeliveryAddress"]!!, color = Color(0xFF6F42C1),onClick = {})
                         ),
                 textColor = textColor,
                         isDarkMode = isDarkMode
@@ -188,9 +190,16 @@ fun ProfileScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(20.dp))
             MenuSection(
                 items = listOf(
-                    MenuItem(icon = "⚙️", label = currentTranslation["Settings"]!!, color = Color(0xFF6C757D)),
-                    MenuItem(icon = "💬", label = currentTranslation["ContactUs"]!!, color = Color(0xFF007BFF)),
-                    MenuItem(icon = "ℹ️", label = currentTranslation["AboutUs"]!!, color = Color(0xFF6C757D))
+                    MenuItem(icon = "⚙️", label = currentTranslation["Settings"]!!, color = Color(0xFF6C757D),onClick = {}),
+                    MenuItem(icon = "💬", label = currentTranslation["ContactUs"]!!, color = Color(0xFF007BFF),onClick = {}),
+                    MenuItem(icon = "ℹ️", label = currentTranslation["AboutUs"]!!, color = Color(0xFF6C757D),onClick = { navController.navigate("AboutScreen")}),
+                    MenuItem(
+                        icon = "🚪",
+                        label = currentTranslation["Logout"]!!,
+                        color = Color(0xFFD9534F),
+                        onClick = { navController.navigate("LoginScreen") }
+                    )
+
                 ),
                 textColor = textColor,isDarkMode = isDarkMode
             )
@@ -229,7 +238,7 @@ fun MenuSection(items: List<MenuItem>, textColor: Color, isDarkMode: Boolean) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { /* Handle click */ }
+                    .clickable { item.onClick() }
                     .padding(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -253,7 +262,8 @@ fun MenuSection(items: List<MenuItem>, textColor: Color, isDarkMode: Boolean) {
     }
 }
 
-data class MenuItem(val icon: String, val label: String, val color: Color)
+data class MenuItem(val icon: String, val label: String, val color: Color, val onClick: () -> Unit = {})
+
 
 @Preview(showBackground = true)
 @Composable
