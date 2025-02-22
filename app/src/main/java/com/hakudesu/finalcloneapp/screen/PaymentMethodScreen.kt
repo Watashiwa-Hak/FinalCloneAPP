@@ -1,10 +1,7 @@
 package com.hakudesu.finalcloneapp.screen
 
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -18,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hakudesu.finalcloneapp.R
 import androidx.compose.foundation.Image
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
@@ -31,15 +27,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
-
-
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -52,7 +42,7 @@ fun PaymentMethodScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     // Colors based on dark mode
     val bgColor = if (isDarkMode.value) Color(0xFF121212) else Color(0xFFF8F8F8)
-    val textColor = if (isDarkMode.value) Color.White else Color.Black
+    val textColor = if (isDarkMode.value) Color(0xFFD98C1B) else Color.Black
 
     // Text based on language
     val paymentMethodText = if (isKhmerMode.value) "វិធីសាស្រ្តទូទាត់" else "Payment Method"
@@ -92,7 +82,6 @@ fun PaymentMethodScreen(navController: NavController) {
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.padding(top = 8.dp)
                     ) {
-                        // Dark Mode Button
                         IconButton(onClick = { isDarkMode.value = !isDarkMode.value }) {
                             Text(
                                 text = if (isDarkMode.value) "☀️" else "🌙",
@@ -101,7 +90,6 @@ fun PaymentMethodScreen(navController: NavController) {
                             )
                         }
 
-                        // Language Change Button
                         IconButton(
                             onClick = { isKhmerMode.value = !isKhmerMode.value },
                             modifier = Modifier
@@ -143,25 +131,20 @@ fun PaymentMethodScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                // Online Payment Option
                 PaymentOption(
                     text = onlinePaymentText,
                     isSelected = selectedPaymentMethod == "Online",
                     onClick = { selectedPaymentMethod = "Online" }
                 )
-
                 Spacer(modifier = Modifier.height(10.dp))
 
-                // On Delivery Payment Option
                 PaymentOption(
                     text = onDeliveryText,
                     isSelected = selectedPaymentMethod == "OnDelivery",
                     onClick = { selectedPaymentMethod = "OnDelivery" }
                 )
-
                 Spacer(modifier = Modifier.height(20.dp))
 
-                // Card Selection and Details
                 if (selectedPaymentMethod == "Online") {
                     CardOption("MasterCard", R.drawable.mastercard)
                     Spacer(modifier = Modifier.height(10.dp))
@@ -194,7 +177,6 @@ fun PaymentMethodScreen(navController: NavController) {
                     Spacer(modifier = Modifier.height(20.dp))
                 }
 
-                // Add Payment Button
                 Button(
                     onClick = { navController.navigate("HomeScreen") },
                     modifier = Modifier
